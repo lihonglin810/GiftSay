@@ -1,12 +1,15 @@
 package com.lanou3g.dllo.giftsay.ui.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.lanou3g.dllo.giftsay.ui.activity.AbsBaseActivity;
 
 /**
  * Created by dllo on 16/9/8.
@@ -47,5 +50,8 @@ public abstract class AbsBaseFragment extends Fragment{
     // 简化findViewById
     protected <T extends View> T byView(int resId){
         return (T) getView().findViewById(resId);
+    }
+    protected void goTo(Class<? extends AbsBaseActivity> to){
+        context.startActivity(new Intent(context,to));
     }
 }
