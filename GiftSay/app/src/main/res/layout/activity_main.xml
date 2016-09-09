@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <FrameLayout
-        android:id="@+id/home_replace_view"
+        android:id="@+id/main_replace_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
@@ -15,7 +15,7 @@
         android:layout_height="1dp"
         android:background="#9d9d9d" />
     <RadioGroup
-        android:id="@+id/home_radio_group"
+        android:id="@+id/main_radio_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -31,7 +31,7 @@
             android:button="@null" />
 
         <RadioButton
-            android:id="@+id/top_rb"
+            android:id="@+id/gift_rb"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -41,7 +41,7 @@
             android:button="@null"  />
 
         <RadioButton
-            android:id="@+id/classify_rb"
+            android:id="@+id/category_rb"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -50,7 +50,7 @@
             android:gravity="center"
             android:button="@null"  />
         <RadioButton
-            android:id="@+id/person_rb"
+            android:id="@+id/profile_rb"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
