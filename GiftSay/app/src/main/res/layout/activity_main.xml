@@ -13,7 +13,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#9d9d9d" />
+        android:background="#e2e2e2" />
     <RadioGroup
         android:id="@+id/main_radio_group"
         android:layout_width="match_parent"
@@ -30,7 +30,8 @@
             android:textColor="@drawable/text_color_selector"
             android:textSize="10sp"
             android:gravity="center"
-            android:button="@null" />
+            android:button="@null"
+            android:background="@null"/>
 
         <RadioButton
             android:id="@+id/gift_rb"
@@ -42,7 +43,8 @@
             android:text="榜单"
             android:textSize="10sp"
             android:gravity="center"
-            android:button="@null"  />
+            android:button="@null"
+            android:background="@null"/>
 
         <RadioButton
             android:id="@+id/category_rb"
@@ -54,7 +56,8 @@
             android:text="分类"
             android:textSize="10sp"
             android:gravity="center"
-            android:button="@null"  />
+            android:button="@null"
+            android:background="@null"/>
         <RadioButton
             android:id="@+id/profile_rb"
             android:layout_width="0dp"
@@ -65,7 +68,8 @@
             android:text="我的"
             android:textSize="10sp"
             android:gravity="center"
-            android:button="@null" />
+            android:button="@null"
+            android:background="@null"/>
     </RadioGroup>
 
 </LinearLayout>
