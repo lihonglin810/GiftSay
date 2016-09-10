@@ -1,15 +1,21 @@
 package com.lanou3g.dllo.giftsay.ui.fragment;
 
+import android.content.Intent;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 
 import com.lanou3g.dllo.giftsay.R;
+import com.lanou3g.dllo.giftsay.ui.activity.LoginActivity;
+
 
 /**
  * Created by dllo on 16/9/9.
  */
-public class ProfileFragment extends AbsBaseFragment{
+public class ProfileFragment extends AbsBaseFragment implements View.OnClickListener {
 
     private RadioGroup radioGroup;
+    private ImageView loginAvatarImg;
     @Override
     protected int setLayout() {
         return R.layout.fragment_profile;
@@ -18,11 +24,13 @@ public class ProfileFragment extends AbsBaseFragment{
     @Override
     protected void initViews() {
         radioGroup = byView(R.id.profile_radiogroup);
+        loginAvatarImg = byView(R.id.profile_avatar);
     }
 
     @Override
     protected void initDatas() {
         radioButtonClick();
+        loginAvatarImg.setOnClickListener(this);
     }
 
     private void radioButtonClick() {
@@ -37,5 +45,14 @@ public class ProfileFragment extends AbsBaseFragment{
                 }
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.profile_avatar:
+                goTo(LoginActivity.class);
+                break;
+        }
     }
 }
