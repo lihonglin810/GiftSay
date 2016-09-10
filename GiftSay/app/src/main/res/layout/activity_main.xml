@@ -27,6 +27,8 @@
             android:layout_weight="1"
             android:drawableTop="@drawable/tab_home_selector"
             android:text="首页"
+            android:textColor="@drawable/text_color_selector"
+            android:textSize="10sp"
             android:gravity="center"
             android:button="@null" />
 
@@ -36,7 +38,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@drawable/tab_gift_selector"
+            android:textColor="@drawable/text_color_selector"
             android:text="榜单"
+            android:textSize="10sp"
             android:gravity="center"
             android:button="@null"  />
 
@@ -46,7 +50,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@drawable/tab_category_selector"
+            android:textColor="@drawable/text_color_selector"
             android:text="分类"
+            android:textSize="10sp"
             android:gravity="center"
             android:button="@null"  />
         <RadioButton
@@ -55,7 +61,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@drawable/tab_profile_selector"
+            android:textColor="@drawable/text_color_selector"
             android:text="我的"
+            android:textSize="10sp"
             android:gravity="center"
             android:button="@null" />
     </RadioGroup>

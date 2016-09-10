@@ -9,29 +9,50 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:weightSum="5"
         android:background="#ff1466"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="礼物说"
             android:textSize="18sp"
             android:layout_margin="5dp"
             android:layout_gravity="center"
             android:textColor="#ffffff"/>
-        <TextView
-            android:layout_width="265dp"
+
+        <LinearLayout
+            android:id="@+id/home_title_tv"
+            android:layout_weight="3.5"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:padding="6dp"
-            android:layout_margin="6dp"
-            android:text=" 中秋送你大爷好礼"
             android:background="@drawable/home_title_shape"
-            android:textSize="14sp"/>
+            android:layout_gravity="center"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/icon_search_grey"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:padding="6dp"
+                android:layout_margin="6dp"
+                android:text=" 中秋送你大爷好礼"
+                android:background="@drawable/home_title_shape"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.5"
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="#ff1466"
@@ -55,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:padding="10dp"
-            android:src="@mipmap/ic_tab_gift_normal"/>
+            android:src="@mipmap/icon_btn_arrow_down"/>
     </LinearLayout>
 
     <android.support.v4.view.ViewPager
