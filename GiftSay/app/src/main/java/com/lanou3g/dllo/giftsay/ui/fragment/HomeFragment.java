@@ -36,6 +36,8 @@ public class HomeFragment extends AbsBaseFragment implements VolleyResult {
     private LinearLayout popLinearLayout;
     private ImageView popWindowImg;
     private RecyclerView pwRecyclerView;
+    private String[] titles;
+    private List<Fragment> fragments;
 
     @Override
     protected int setLayout() {
@@ -53,6 +55,8 @@ public class HomeFragment extends AbsBaseFragment implements VolleyResult {
 
     @Override
     protected void initDatas() {
+        // 数据
+        buildData();
         HomePageTab();
         // 点击图片下拉出来popWindow
         popWindowImg.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +69,32 @@ public class HomeFragment extends AbsBaseFragment implements VolleyResult {
         });
         // 网络请求
         VolleyInstance.getInstance().startRequest(dataUrl,this);
+
+    }
+
+    private void buildData() {
+        fragments = new ArrayList<>();
+        fragments.add(new HomeSelectFragment());
+        fragments.add(HomeCommonFragment.newInstance("体育新闻"));
+        fragments.add(HomeCommonFragment.newInstance("娱乐"));
+        fragments.add(HomeCommonFragment.newInstance("云锦"));
+        fragments.add(HomeCommonFragment.newInstance("军事新闻"));
+        fragments.add(HomeCommonFragment.newInstance("时尚新闻"));
+        fragments.add(HomeCommonFragment.newInstance("撒旦新闻"));
+        fragments.add(HomeCommonFragment.newInstance("达到新闻"));
+        fragments.add(HomeCommonFragment.newInstance("范德新闻"));
+        fragments.add(HomeCommonFragment.newInstance("发地方新闻"));
+        fragments.add(HomeCommonFragment.newInstance("打算新闻"));
+        fragments.add(HomeCommonFragment.newInstance("的说新闻"));
+        HomeVpAdapter homeVpAdapter = new HomeVpAdapter(getChildFragmentManager(),fragments);
+        mHomeVp.setAdapter(homeVpAdapter);
+        mHomeTab.setupWithViewPager(mHomeVp);
+        mHomeTab.getTabAt(0).setText("精选");
+        mHomeTab.setTabMode(TabLayout.MODE_SCROLLABLE);
+        for (int i = 1; i < fragments.size(); i++) {
+            mHomeTab.getTabAt(i).setText("送女友" + i);
+        }
+
     }
 
     // 显示下拉popWindow菜单
@@ -84,8 +114,6 @@ public class HomeFragment extends AbsBaseFragment implements VolleyResult {
         pwRecyclerView.setLayoutManager(manager);
         homePopAdapter.setDatas(datas);
         pwRecyclerView.setAdapter(homePopAdapter);
-
-
         pw.setContentView(view);
         pw.setFocusable(true);
         pw.setOnDismissListener(new PopupWindow.OnDismissListener() {
@@ -99,19 +127,7 @@ public class HomeFragment extends AbsBaseFragment implements VolleyResult {
 
     // 上面的tablayout
     private void HomePageTab() {
-        List<Fragment> datas = new ArrayList<>();
-        datas.add(new HomeSelectFragment());
-        for (int i = 0; i < 12; i++) {
-            datas.add(new HomeCommonFragment());
-        }
-        HomeVpAdapter homeVpAdapter = new HomeVpAdapter(getChildFragmentManager(),datas);
-        mHomeVp.setAdapter(homeVpAdapter);
-        mHomeTab.setupWithViewPager(mHomeVp);
-        mHomeTab.getTabAt(0).setText("精选");
-        mHomeTab.setTabMode(TabLayout.MODE_SCROLLABLE);
-        for (int i = 1; i < 13; i++) {
-            mHomeTab.getTabAt(i).setText("送女友");
-        }
+
     }
 
     @Override
