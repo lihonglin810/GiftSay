@@ -5,17 +5,19 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.lanou3g.dllo.giftsay.R;
+import com.lanou3g.dllo.giftsay.model.net.VolleyInstance;
+import com.lanou3g.dllo.giftsay.model.net.VolleyResult;
+
 
 /**
  * Created by dllo on 16/9/10.
  */
-public class HomeCommonFragment extends AbsBaseFragment{
+public class HomeCommonFragment extends AbsBaseFragment implements VolleyResult {
 
     private ListView commomlv;
     private TextView showTv;
 
     public static HomeCommonFragment newInstance(String url) {
-
         Bundle args = new Bundle();
         args.putString("url", url);
         HomeCommonFragment fragment = new HomeCommonFragment();
@@ -35,6 +37,17 @@ public class HomeCommonFragment extends AbsBaseFragment{
 
     @Override
     protected void initDatas() {
-        showTv.setText(getArguments().getString("url"));
+        String url = getArguments().getString("url");
+        VolleyInstance.getInstance().startRequest(url,this);
+    }
+
+    @Override
+    public void success(String resultStr) {
+        showTv.setText(resultStr);
+    }
+
+    @Override
+    public void failure() {
+
     }
 }

@@ -36,7 +36,7 @@ public class CategoryFragment extends AbsBaseFragment{
     private void CategoryPageTab() {
         List<Fragment> datas = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
-            datas.add(new HomeCommonFragment());
+            datas.add(HomeCommonFragment.newInstance("url"));
         }
         CategoryAdapter categoryAdapter = new CategoryAdapter(getChildFragmentManager(),datas);
         mCategoryVp.setAdapter(categoryAdapter);

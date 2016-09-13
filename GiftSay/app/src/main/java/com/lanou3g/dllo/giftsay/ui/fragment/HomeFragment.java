@@ -33,11 +33,23 @@ public class HomeFragment extends AbsBaseFragment implements VolleyResult {
 
     private ViewPager mHomeVp;
     private TabLayout mHomeTab;
-    private LinearLayout popLinearLayout;
     private ImageView popWindowImg;
     private RecyclerView pwRecyclerView;
-    private String[] titles;
     private List<Fragment> fragments;
+
+    private String girlfriendUrl = "http://api.liwushuo.com/v2/channels/10/items_v2?gender=1&limit=20&offset=0&generation=1";
+    private String haitaoUrl = "http://api.liwushuo.com/v2/channels/129/items_v2?gender=1&limit=20&offset=0&generation=1";
+    private String chuangyiUrl = "http://api.liwushuo.com/v2/channels/125/items_v2?gender=1&limit=20&offset=0&generation=1";
+    private String kejiUrl = "http://api.liwushuo.com/v2/channels/28/items_v2?gender=1&limit=20&offset=0&generation=1";
+    private String parentUrl = "http://api.liwushuo.com/v2/channels/6/items_v2?gender=1&limit=20&offset=0&generation=1";
+    private String jiyouUrl = "http://api.liwushuo.com/v2/channels/26/items_v2?gender=1&limit=20&offset=0&generation=1";
+    private String guimiUrl = "http://api.liwushuo.com/v2/channels/5/items_v2?gender=1&limit=20&offset=0&generation=1";
+    private String tongshiUrl = "http://api.liwushuo.com/v2/channels/17/items_v2?gender=1&limit=20&offset=0&generation=1";
+    private String babyUrl = "http://api.liwushuo.com/v2/channels/24/items_v2?gender=1&limit=20&offset=0&generation=1";
+    private String shejiganUrl = "http://api.liwushuo.com/v2/channels/127/items_v2?gender=1&limit=20&offset=0&generation=1";
+    private String wenyifengUrl = "http://api.liwushuo.com/v2/channels/14/items_v2?gender=1&limit=20&offset=0&generation=1";
+    private String qipaUrl = "http://api.liwushuo.com/v2/channels/126/items_v2?gender=1&limit=20&offset=0&generation=1";
+    private String mengmengdaUrl = "http://api.liwushuo.com/v2/channels/11/items_v2?gender=1&limit=20&offset=0&generation=1";
 
     @Override
     protected int setLayout() {
@@ -49,8 +61,6 @@ public class HomeFragment extends AbsBaseFragment implements VolleyResult {
         mHomeVp = byView(R.id.homepage_vp);
         mHomeTab = byView(R.id.homepage_tb);
         popWindowImg = byView(R.id.pop_window_img);
-        popLinearLayout = byView(R.id.home_pop_linear);
-
     }
 
     @Override
@@ -75,17 +85,20 @@ public class HomeFragment extends AbsBaseFragment implements VolleyResult {
     private void buildData() {
         fragments = new ArrayList<>();
         fragments.add(new HomeSelectFragment());
-        fragments.add(HomeCommonFragment.newInstance("体育新闻"));
-        fragments.add(HomeCommonFragment.newInstance("娱乐"));
-        fragments.add(HomeCommonFragment.newInstance("云锦"));
-        fragments.add(HomeCommonFragment.newInstance("军事新闻"));
-        fragments.add(HomeCommonFragment.newInstance("时尚新闻"));
-        fragments.add(HomeCommonFragment.newInstance("撒旦新闻"));
-        fragments.add(HomeCommonFragment.newInstance("达到新闻"));
-        fragments.add(HomeCommonFragment.newInstance("范德新闻"));
-        fragments.add(HomeCommonFragment.newInstance("发地方新闻"));
-        fragments.add(HomeCommonFragment.newInstance("打算新闻"));
-        fragments.add(HomeCommonFragment.newInstance("的说新闻"));
+        fragments.add(HomeCommonFragment.newInstance(girlfriendUrl));
+        fragments.add(HomeCommonFragment.newInstance(haitaoUrl));
+        fragments.add(HomeCommonFragment.newInstance(chuangyiUrl));
+        fragments.add(HomeCommonFragment.newInstance(kejiUrl));
+        fragments.add(HomeCommonFragment.newInstance(parentUrl));
+        fragments.add(HomeCommonFragment.newInstance(jiyouUrl));
+        fragments.add(HomeCommonFragment.newInstance(guimiUrl));
+        fragments.add(HomeCommonFragment.newInstance(tongshiUrl));
+        fragments.add(HomeCommonFragment.newInstance(babyUrl));
+        fragments.add(HomeCommonFragment.newInstance(shejiganUrl));
+        fragments.add(HomeCommonFragment.newInstance(wenyifengUrl));
+        fragments.add(HomeCommonFragment.newInstance(qipaUrl));
+        fragments.add(HomeCommonFragment.newInstance(mengmengdaUrl));
+
         HomeVpAdapter homeVpAdapter = new HomeVpAdapter(getChildFragmentManager(),fragments);
         mHomeVp.setAdapter(homeVpAdapter);
         mHomeTab.setupWithViewPager(mHomeVp);

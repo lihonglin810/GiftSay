@@ -72,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@id/item_likes_count"
-            android:src="@mipmap/ic_tab_gift_normal"/>
+            android:src="@mipmap/ic_feed_favourite_normal"/>
     </RelativeLayout>
 
 </LinearLayout>
