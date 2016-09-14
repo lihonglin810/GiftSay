@@ -4,6 +4,7 @@ import com.lanou3g.dllo.giftsay.R;
 
 /**
  * Created by dllo on 16/9/10.
+ * 登录界面Activity
  */
 public class LoginActivity extends AbsBaseActivity{
     @Override

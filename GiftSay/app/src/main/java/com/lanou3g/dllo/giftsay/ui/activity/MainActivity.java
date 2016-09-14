@@ -2,10 +2,6 @@ package com.lanou3g.dllo.giftsay.ui.activity;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.animation.AnimationUtils;
 import android.widget.RadioGroup;
 
 import com.lanou3g.dllo.giftsay.R;
@@ -14,7 +10,10 @@ import com.lanou3g.dllo.giftsay.ui.fragment.GiftFragment;
 import com.lanou3g.dllo.giftsay.ui.fragment.HomeFragment;
 import com.lanou3g.dllo.giftsay.ui.fragment.ProfileFragment;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * 主页面
+ */
+public class MainActivity extends AbsBaseActivity {
 
     private RadioGroup mRadioGroup;
     private HomeFragment mHomeFragment;
@@ -23,15 +22,21 @@ public class MainActivity extends AppCompatActivity {
     private ProfileFragment mProfileFragment;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        mRadioGroup = (RadioGroup) findViewById(R.id.main_radio_group);
-        mHomeFragment = new HomeFragment();
-        mGiftFragment = new GiftFragment();
-        mCategoryFragment = new CategoryFragment();
-        mProfileFragment = new ProfileFragment();
+    protected int setLayout() {
+        return R.layout.activity_main;
+    }
 
+    @Override
+    protected void initViews() {
+        mRadioGroup = (RadioGroup) findViewById(R.id.main_radio_group);
+        mHomeFragment = HomeFragment.newInstance();
+        mGiftFragment = GiftFragment.newInstance();
+        mCategoryFragment = CategoryFragment.newInstance();
+        mProfileFragment = ProfileFragment.newInstance();
+    }
+
+    @Override
+    protected void initDatas() {
         mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {

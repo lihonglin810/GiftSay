@@ -10,11 +10,11 @@
             android:id="@+id/item_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="6dp"
+            android:padding="4dp"
             android:textColor="#ff195a"
             android:background="#ffcfcf"
             android:layout_margin="10dp"
-            android:textSize="12sp"
+            android:textSize="10sp"
             android:text="海淘"/>
         <TextView
             android:id="@+id/item_top_title"
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/item_category"
             android:text="海涛情报局"
-            android:textSize="18sp"
+            android:textSize="13sp"
             android:layout_centerVertical="true" />
         <TextView
             android:id="@+id/item_nickname"
@@ -32,20 +32,21 @@
             android:layout_centerVertical="true"
             android:layout_margin="10dp"
             android:text="陶局长"
-            android:textSize="16sp"/>
+            android:textSize="13sp"/>
         <ImageView
             android:id="@+id/item_avatar_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@mipmap/ic_tab_gift_normal"
             android:layout_toLeftOf="@id/item_nickname"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            />
     </RelativeLayout>
     <ImageView
-        android:id="@+id/item_banner_img"
+        android:id="@+id/item_cover_img"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:scaleType="fitStart"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
         android:src="@mipmap/icon"
         />
     <RelativeLayout
@@ -58,20 +59,24 @@
             android:id="@+id/item_bottom_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:text="第19期 | 不能错过的日本护肤，码住！"/>
+            android:textSize="13sp"
+            android:text="第19期 | 不能错过的日本护肤，码住！"
+
+            android:ellipsize="end"/>
 
         <TextView
             android:id="@+id/item_likes_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:textSize="10sp"
             android:text="123"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@id/item_likes_count"
+            android:layout_marginRight="5dp"
             android:src="@mipmap/ic_feed_favourite_normal"/>
     </RelativeLayout>
 

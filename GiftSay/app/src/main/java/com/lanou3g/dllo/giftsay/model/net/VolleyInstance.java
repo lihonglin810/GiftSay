@@ -9,6 +9,7 @@ import com.lanou3g.dllo.giftsay.ui.app.GiftSayApp;
 
 /**
  * Created by dllo on 16/9/12.
+ * 网络请求单例
  */
 public class VolleyInstance {
     private static VolleyInstance instance;

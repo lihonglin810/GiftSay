@@ -1,5 +1,6 @@
 package com.lanou3g.dllo.giftsay.ui.fragment;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -13,10 +14,20 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/9.
+ * 分类Fragment
  */
 public class CategoryFragment extends AbsBaseFragment{
     private ViewPager mCategoryVp;
     private TabLayout mCategoryTb;
+
+    public static CategoryFragment newInstance() {
+        
+        Bundle args = new Bundle();
+        
+        CategoryFragment fragment = new CategoryFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     protected int setLayout() {
         return R.layout.fragment_category;

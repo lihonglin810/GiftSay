@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/12.
+ * 主页popwindow适配器
  */
 public class HomePopAdapter extends RecyclerView.Adapter<HomePopAdapter.HomeViewHolder>{
 

@@ -2,6 +2,7 @@ package com.lanou3g.dllo.giftsay.ui.fragment;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -27,6 +28,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/9.
+ * 主页Fragment
  */
 public class HomeFragment extends AbsBaseFragment implements VolleyResult {
     private String dataUrl = "http://api.liwushuo.com/v2/channels/100/items_v2?ad=2&gender=1&generation=1&limit=20&offset=0";
@@ -37,6 +39,7 @@ public class HomeFragment extends AbsBaseFragment implements VolleyResult {
     private RecyclerView pwRecyclerView;
     private List<Fragment> fragments;
 
+    private String tuijianUrl = "http://api.liwushuo.com/v2/channels/100/items_v2?ad=2&gender=1&generation=1&limit=20&offset=0";
     private String girlfriendUrl = "http://api.liwushuo.com/v2/channels/10/items_v2?gender=1&limit=20&offset=0&generation=1";
     private String haitaoUrl = "http://api.liwushuo.com/v2/channels/129/items_v2?gender=1&limit=20&offset=0&generation=1";
     private String chuangyiUrl = "http://api.liwushuo.com/v2/channels/125/items_v2?gender=1&limit=20&offset=0&generation=1";
@@ -50,6 +53,13 @@ public class HomeFragment extends AbsBaseFragment implements VolleyResult {
     private String wenyifengUrl = "http://api.liwushuo.com/v2/channels/14/items_v2?gender=1&limit=20&offset=0&generation=1";
     private String qipaUrl = "http://api.liwushuo.com/v2/channels/126/items_v2?gender=1&limit=20&offset=0&generation=1";
     private String mengmengdaUrl = "http://api.liwushuo.com/v2/channels/11/items_v2?gender=1&limit=20&offset=0&generation=1";
+
+    public static HomeFragment newInstance() {
+        Bundle args = new Bundle();
+        HomeFragment fragment = new HomeFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     protected int setLayout() {
@@ -84,7 +94,7 @@ public class HomeFragment extends AbsBaseFragment implements VolleyResult {
 
     private void buildData() {
         fragments = new ArrayList<>();
-        fragments.add(new HomeSelectFragment());
+        fragments.add(HomeSelectFragment.newInstance(tuijianUrl));
         fragments.add(HomeCommonFragment.newInstance(girlfriendUrl));
         fragments.add(HomeCommonFragment.newInstance(haitaoUrl));
         fragments.add(HomeCommonFragment.newInstance(chuangyiUrl));

@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/13.
+ * 首页的实体类
  */
 public class HomeCommonBean {
 
