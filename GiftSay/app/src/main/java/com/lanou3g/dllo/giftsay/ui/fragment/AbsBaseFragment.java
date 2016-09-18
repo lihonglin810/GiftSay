@@ -51,6 +51,7 @@ public abstract class AbsBaseFragment extends Fragment{
     protected <T extends View> T byView(int resId){
         return (T) getView().findViewById(resId);
     }
+    // 跳转界面
     protected void goTo(Class<? extends AbsBaseActivity> to){
         context.startActivity(new Intent(context,to));
     }

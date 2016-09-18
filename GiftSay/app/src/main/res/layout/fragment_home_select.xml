@@ -1,61 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="9">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/lunbotu"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:src="@mipmap/icon"
-        />
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="2"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="#dfdfdf"
-        android:layout_weight="0.2"/>
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_weight="0.5">
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="200dp"
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/rotate_vp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <LinearLayout
+                android:id="@+id/rotate_point_container"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_gravity="bottom|center"
+                android:layout_marginLeft="110dp"
+                android:orientation="horizontal"/>
+        </FrameLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/home_select_rv"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"/>
+
+        <View
+            android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:layout_centerInParent="true"
-            android:background="#cccccc"/>
-        <TextView
-            android:id="@+id/jingxuan_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="#ededed"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="9月13日 星期二"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="下次更新 8:00"
-            android:layout_below="@id/jingxuan_date"
-            android:layout_centerInParent="true"
-            android:textColor="#ff58a9"
-            android:textSize="10sp"/>
+            android:background="#dfdfdf" />
 
-    </RelativeLayout>
-    <ListView
-        android:id="@+id/home_select_lv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="3.3"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:gravity="center">
 
-</LinearLayout>
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="2dp"
+                android:layout_centerInParent="true"
+                android:background="#cccccc" />
+
+            <TextView
+                android:id="@+id/jingxuan_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:layout_centerInParent="true"
+                android:background="#ededed"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="9月13日 星期二"
+                android:textSize="10sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/jingxuan_date"
+                android:layout_centerHorizontal="true"
+                android:text="下次更新 8:00"
+                android:layout_marginTop="10dp"
+                android:textColor="#ff58a9"
+                android:textSize="8sp" />
+
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/home_select_lv"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+    </LinearLayout>
+</ScrollView>

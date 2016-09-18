@@ -58,7 +58,7 @@ public class HomeCommonAdapter extends BaseAdapter{
             holder = (HomeCommonViewHolder) convertView.getTag();
         }
         HomeCommonBean.DataBean.ItemsBean bean = datas.get(position);
-        if (bean != null){
+        if (bean.getColumn() != null && bean.getAuthor() != null){
             holder.categoryTv.setText(bean.getColumn().getCategory());
             holder.toptitleTv.setText(bean.getColumn().getTitle());
             holder.nicknameTv.setText(bean.getAuthor().getNickname());

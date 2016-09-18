@@ -40,6 +40,9 @@ public class HomeFragment extends AbsBaseFragment implements VolleyResult {
     private List<Fragment> fragments;
 
     private String tuijianUrl = "http://api.liwushuo.com/v2/channels/100/items_v2?ad=2&gender=1&generation=1&limit=20&offset=0";
+    private String scrollUrl = "http://api.liwushuo.com/v2/secondary_banners?gender=1&generation=2";
+    private String lunboUrl = "http://api.liwushuo.com/v2/banners?channel";
+
     private String girlfriendUrl = "http://api.liwushuo.com/v2/channels/10/items_v2?gender=1&limit=20&offset=0&generation=1";
     private String haitaoUrl = "http://api.liwushuo.com/v2/channels/129/items_v2?gender=1&limit=20&offset=0&generation=1";
     private String chuangyiUrl = "http://api.liwushuo.com/v2/channels/125/items_v2?gender=1&limit=20&offset=0&generation=1";
@@ -94,7 +97,7 @@ public class HomeFragment extends AbsBaseFragment implements VolleyResult {
 
     private void buildData() {
         fragments = new ArrayList<>();
-        fragments.add(HomeSelectFragment.newInstance(tuijianUrl));
+        fragments.add(HomeSelectFragment.newInstance(tuijianUrl,scrollUrl,lunboUrl));
         fragments.add(HomeCommonFragment.newInstance(girlfriendUrl));
         fragments.add(HomeCommonFragment.newInstance(haitaoUrl));
         fragments.add(HomeCommonFragment.newInstance(chuangyiUrl));

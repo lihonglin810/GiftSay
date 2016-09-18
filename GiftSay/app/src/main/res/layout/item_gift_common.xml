@@ -18,6 +18,7 @@
             android:id="@+id/item_gift_cover_image"
             android:layout_width="match_parent"
             android:layout_height="185dp"
+            android:scaleType="fitXY"
             android:src="@mipmap/icon" />
 
         <TextView
