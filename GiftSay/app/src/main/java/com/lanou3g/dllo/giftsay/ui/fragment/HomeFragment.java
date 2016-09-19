@@ -41,7 +41,7 @@ public class HomeFragment extends AbsBaseFragment{
     private RecyclerView pwRecyclerView;
     private List<Fragment> fragments;
 
-    private String tuijianUrl = "http://api.liwushuo.com/v2/channels/100/items_v2?ad=2&gender=1&generation=1&limit=20&offset=0";
+    private String tuijianUrl = "http://api.liwushuo.com/v2/channels/100/items_v2?ad=2&gender=1&generation=1&limit=10&offset=0";
     private String scrollUrl = "http://api.liwushuo.com/v2/secondary_banners?gender=1&generation=2";
     private String lunboUrl = "http://api.liwushuo.com/v2/banners?channel";
 
