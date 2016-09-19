@@ -56,7 +56,6 @@ public class HomeSelectFragment extends AbsBaseFragment{
 
     @Override
     protected void initViews() {
-//        homeSelectLv = (MyListView) homeSelectLv.findViewById(R.id.home_select_lv);
         homeSelectLv = byView(R.id.home_select_lv);
         homeSelectRv = byView(R.id.home_select_rv);
         viewPager = byView(R.id.rotate_vp);

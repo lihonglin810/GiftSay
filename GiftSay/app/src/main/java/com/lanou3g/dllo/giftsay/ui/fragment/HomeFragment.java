@@ -16,8 +16,10 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.lanou3g.dllo.giftsay.R;
 import com.lanou3g.dllo.giftsay.model.bean.HomePopBean;
+import com.lanou3g.dllo.giftsay.model.bean.HomeTabTitleBean;
 import com.lanou3g.dllo.giftsay.model.net.VolleyInstance;
 import com.lanou3g.dllo.giftsay.model.net.VolleyResult;
 import com.lanou3g.dllo.giftsay.ui.adapter.HomePopAdapter;
@@ -30,7 +32,7 @@ import java.util.List;
  * Created by dllo on 16/9/9.
  * 主页Fragment
  */
-public class HomeFragment extends AbsBaseFragment implements VolleyResult {
+public class HomeFragment extends AbsBaseFragment{
     private String tabtitleUrl = "http://api.liwushuo.com/v2/channels/preset?gender=1&generation=1";
 
     private ViewPager mHomeVp;
@@ -110,17 +112,27 @@ public class HomeFragment extends AbsBaseFragment implements VolleyResult {
         fragments.add(HomeCommonFragment.newInstance(wenyifengUrl));
         fragments.add(HomeCommonFragment.newInstance(qipaUrl));
         fragments.add(HomeCommonFragment.newInstance(mengmengdaUrl));
-
-        // 网络请求
-        VolleyInstance.getInstance().startRequest(tabtitleUrl,this);
         HomeVpAdapter homeVpAdapter = new HomeVpAdapter(getChildFragmentManager(),fragments);
         mHomeVp.setAdapter(homeVpAdapter);
         mHomeTab.setupWithViewPager(mHomeVp);
-        mHomeTab.getTabAt(0).setText("精选");
         mHomeTab.setTabMode(TabLayout.MODE_SCROLLABLE);
-        for (int i = 1; i < fragments.size(); i++) {
-            mHomeTab.getTabAt(i).setText("送女友" + i);
-        }
+        // 网络请求
+        VolleyInstance.getInstance().startRequest(tabtitleUrl, new VolleyResult() {
+            @Override
+            public void success(String resultStr) {
+                Gson gson = new Gson();
+                HomeTabTitleBean homeTabTitleBean = gson.fromJson(resultStr,HomeTabTitleBean.class);
+                List<HomeTabTitleBean.DataBean.ChannelsBean> datas = homeTabTitleBean.getData().getChannels();
+                for (int i = 0; i < fragments.size(); i++) {
+                    mHomeTab.getTabAt(i).setText(datas.get(i).getName());
+                }
+            }
+
+            @Override
+            public void failure() {
+
+            }
+        });
 
     }
 
@@ -157,13 +169,4 @@ public class HomeFragment extends AbsBaseFragment implements VolleyResult {
 
     }
 
-    @Override
-    public void success(String resultStr) {
-        Log.d("xxxxx", resultStr);
-    }
-
-    @Override
-    public void failure() {
-        Toast.makeText(context, "请重新加载", Toast.LENGTH_SHORT).show();
-    }
 }
