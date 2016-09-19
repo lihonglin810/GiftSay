@@ -12,6 +12,7 @@ import com.lanou3g.dllo.giftsay.model.bean.GiftCommonBean;
 import com.lanou3g.dllo.giftsay.model.net.VolleyInstance;
 import com.lanou3g.dllo.giftsay.model.net.VolleyResult;
 import com.lanou3g.dllo.giftsay.ui.adapter.GiftCommonAdapter;
+import com.lanou3g.dllo.giftsay.view.MyRecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

@@ -31,7 +31,7 @@ import java.util.List;
  * 主页Fragment
  */
 public class HomeFragment extends AbsBaseFragment implements VolleyResult {
-    private String dataUrl = "http://api.liwushuo.com/v2/channels/100/items_v2?ad=2&gender=1&generation=1&limit=20&offset=0";
+    private String tabtitleUrl = "http://api.liwushuo.com/v2/channels/preset?gender=1&generation=1";
 
     private ViewPager mHomeVp;
     private TabLayout mHomeTab;
@@ -90,8 +90,7 @@ public class HomeFragment extends AbsBaseFragment implements VolleyResult {
                 popWindowImg.setImageResource(R.mipmap.icon_btn_arrow_up);
             }
         });
-        // 网络请求
-        VolleyInstance.getInstance().startRequest(dataUrl,this);
+
 
     }
 
@@ -112,6 +111,8 @@ public class HomeFragment extends AbsBaseFragment implements VolleyResult {
         fragments.add(HomeCommonFragment.newInstance(qipaUrl));
         fragments.add(HomeCommonFragment.newInstance(mengmengdaUrl));
 
+        // 网络请求
+        VolleyInstance.getInstance().startRequest(tabtitleUrl,this);
         HomeVpAdapter homeVpAdapter = new HomeVpAdapter(getChildFragmentManager(),fragments);
         mHomeVp.setAdapter(homeVpAdapter);
         mHomeTab.setupWithViewPager(mHomeVp);

@@ -8,9 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.Toast;
-
 import com.google.gson.Gson;
 import com.lanou3g.dllo.giftsay.R;
 import com.lanou3g.dllo.giftsay.model.bean.HomeCommonBean;
@@ -21,8 +18,8 @@ import com.lanou3g.dllo.giftsay.model.net.VolleyResult;
 import com.lanou3g.dllo.giftsay.ui.adapter.HomeCommonAdapter;
 import com.lanou3g.dllo.giftsay.ui.adapter.HomeSelectRvAdapter;
 import com.lanou3g.dllo.giftsay.ui.adapter.RotateVpAdapter;
+import com.lanou3g.dllo.giftsay.view.MyListView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,7 +28,7 @@ import java.util.List;
  */
 public class HomeSelectFragment extends AbsBaseFragment{
 
-    private ListView homeSelectLv;
+    private MyListView homeSelectLv;
     private RecyclerView homeSelectRv;
     private HomeCommonAdapter homeCommonAdapter;
     private HomeSelectRvAdapter homeSelectRvAdapter;
@@ -40,7 +37,7 @@ public class HomeSelectFragment extends AbsBaseFragment{
 
     private ViewPager viewPager;
     private LinearLayout pointLl;// 轮播状态改变的小圆点容器
-    private List<RotateBean.DataBean.BannersBean> lunbotuList;
+    private List<RotateBean.DataBean.BannersBean> datas;
     private RotateVpAdapter vpAdapter;
 
     public static HomeSelectFragment newInstance(String url,String sUrl,String lunboUrl) {
@@ -59,6 +56,7 @@ public class HomeSelectFragment extends AbsBaseFragment{
 
     @Override
     protected void initViews() {
+//        homeSelectLv = (MyListView) homeSelectLv.findViewById(R.id.home_select_lv);
         homeSelectLv = byView(R.id.home_select_lv);
         homeSelectRv = byView(R.id.home_select_rv);
         viewPager = byView(R.id.rotate_vp);
@@ -128,12 +126,12 @@ public class HomeSelectFragment extends AbsBaseFragment{
             public void onPageSelected(int position) {
                 if (isRotate) {
                     // 把所有小点设置为白色
-                    for (int i = 0; i < lunbotuList.size(); i++) {
+                    for (int i = 0; i < datas.size(); i++) {
                         ImageView pointIv = (ImageView) pointLl.getChildAt(i);
                         pointIv.setImageResource(R.mipmap.btn_check_disabled);
                     }
                     // 设置当前位置小点为灰色
-                    ImageView iv = (ImageView) pointLl.getChildAt(position % lunbotuList.size());
+                    ImageView iv = (ImageView) pointLl.getChildAt(position % datas.size());
                     iv.setImageResource(R.mipmap.btn_check_disabled_nightmode);
                 }
             }
@@ -150,7 +148,7 @@ public class HomeSelectFragment extends AbsBaseFragment{
      */
     private void addPoints() {
         // 有多少张图加载多少个小点
-        for (int i = 0; i < lunbotuList.size(); i++) {
+        for (int i = 0; i < datas.size(); i++) {
             ImageView pointIv = new ImageView(context);
             pointIv.setPadding(5,5,5,5);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(20,20);
@@ -209,11 +207,11 @@ public class HomeSelectFragment extends AbsBaseFragment{
                 Log.d("1111", resultStr);
                 Gson gson = new Gson();
                 RotateBean rotateBean = gson.fromJson(resultStr,RotateBean.class);
-                lunbotuList = rotateBean.getData().getBanners();
-                vpAdapter.setDatas(lunbotuList);
+                datas = rotateBean.getData().getBanners();
+                vpAdapter.setDatas(datas);
                 // ViewPager的页数为int最大值,设置当前页多一些,可以上来就向前滑动
                 // 为了保证第一页始终为数据的第0条 取余要为0,因此设置数据集合大小的倍数
-                viewPager.setCurrentItem(lunbotuList.size() * 100);
+                viewPager.setCurrentItem(datas.size() * 100);
                 // 开始轮播
                 handler = new Handler();
                 startRotate();
