@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:scrollbars="none">-->
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="栏目"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_margin="5dp"
+                android:src="@mipmap/mq_arrow_right"
+                />
+            <TextView
+                android:id="@+id/category_strategy_all_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/right"
+                android:text="查看全部"
+                android:layout_centerVertical="true"
+                android:textColor="#1d1d1d"
+                android:textSize="10sp" />
+        </RelativeLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/category_strategy_rv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:background="#d4d2d2" />
+        <com.lanou3g.dllo.giftsay.view.MyListView
+            android:id="@+id/category_strategy_lv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+<!--</ScrollView>-->

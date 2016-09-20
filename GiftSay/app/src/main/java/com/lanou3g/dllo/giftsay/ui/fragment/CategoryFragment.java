@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.widget.ListView;
 
 import com.lanou3g.dllo.giftsay.R;
 import com.lanou3g.dllo.giftsay.ui.adapter.CategoryAdapter;
@@ -19,11 +18,11 @@ import java.util.List;
 public class CategoryFragment extends AbsBaseFragment{
     private ViewPager mCategoryVp;
     private TabLayout mCategoryTb;
+    private String strategyUrl = "http://api.liwushuo.com/v2/columns";
+    private String singleUrl = "http://api.liwushuo.com/v2/channel_groups/all";
 
     public static CategoryFragment newInstance() {
-        
         Bundle args = new Bundle();
-        
         CategoryFragment fragment = new CategoryFragment();
         fragment.setArguments(args);
         return fragment;
@@ -46,9 +45,8 @@ public class CategoryFragment extends AbsBaseFragment{
 
     private void CategoryPageTab() {
         List<Fragment> datas = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
-            datas.add(HomeCommonFragment.newInstance("url"));
-        }
+        datas.add(CategoryStrategyFragment.newInstance(strategyUrl,singleUrl));
+        datas.add(CategorySingleFragment.newInstance(singleUrl));
         CategoryAdapter categoryAdapter = new CategoryAdapter(getChildFragmentManager(),datas);
         mCategoryVp.setAdapter(categoryAdapter);
         mCategoryTb.setupWithViewPager(mCategoryVp);
