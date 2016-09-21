@@ -2,6 +2,8 @@ package com.lanou3g.dllo.giftsay.ui.fragment;
 
 import android.os.Bundle;
 
+import com.lanou3g.dllo.giftsay.R;
+
 /**
  * Created by dllo on 16/9/20.
  */
@@ -16,7 +18,7 @@ public class CategorySingleFragment extends AbsBaseFragment{
     }
     @Override
     protected int setLayout() {
-        return 0;
+        return R.layout.fragment_category_single;
     }
 
     @Override

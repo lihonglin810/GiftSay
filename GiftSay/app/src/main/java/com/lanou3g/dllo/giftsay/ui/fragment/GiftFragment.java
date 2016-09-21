@@ -26,9 +26,7 @@ public class GiftFragment extends AbsBaseFragment{
     private String newStarUrl = "http://api.liwushuo.com/v2/ranks_v2/ranks/4?limit=20&offset=0";
 
     public static GiftFragment newInstance() {
-
         Bundle args = new Bundle();
-
         GiftFragment fragment = new GiftFragment();
         fragment.setArguments(args);
         return fragment;

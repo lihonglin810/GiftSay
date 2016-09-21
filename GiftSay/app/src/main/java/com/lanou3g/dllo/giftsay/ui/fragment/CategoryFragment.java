@@ -19,7 +19,8 @@ public class CategoryFragment extends AbsBaseFragment{
     private ViewPager mCategoryVp;
     private TabLayout mCategoryTb;
     private String strategyUrl = "http://api.liwushuo.com/v2/columns";
-    private String singleUrl = "http://api.liwushuo.com/v2/channel_groups/all";
+    private String columnUrl = "http://api.liwushuo.com/v2/channel_groups/all";
+    private String singleUrl = "";
 
     public static CategoryFragment newInstance() {
         Bundle args = new Bundle();
@@ -45,7 +46,7 @@ public class CategoryFragment extends AbsBaseFragment{
 
     private void CategoryPageTab() {
         List<Fragment> datas = new ArrayList<>();
-        datas.add(CategoryStrategyFragment.newInstance(strategyUrl,singleUrl));
+        datas.add(CategoryStrategyFragment.newInstance(strategyUrl,columnUrl));
         datas.add(CategorySingleFragment.newInstance(singleUrl));
         CategoryAdapter categoryAdapter = new CategoryAdapter(getChildFragmentManager(),datas);
         mCategoryVp.setAdapter(categoryAdapter);

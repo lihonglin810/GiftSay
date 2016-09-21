@@ -1,19 +1,15 @@
 package com.lanou3g.dllo.giftsay.ui.fragment;
 
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ImageView;
-import android.widget.Toast;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.google.gson.Gson;
 import com.lanou3g.dllo.giftsay.R;
 import com.lanou3g.dllo.giftsay.model.bean.GiftCommonBean;
 import com.lanou3g.dllo.giftsay.model.net.VolleyInstance;
 import com.lanou3g.dllo.giftsay.model.net.VolleyResult;
-import com.lanou3g.dllo.giftsay.ui.adapter.GiftCommonAdapter;
-import com.lanou3g.dllo.giftsay.view.MyRecyclerView;
-import com.squareup.picasso.Picasso;
+import com.lanou3g.dllo.giftsay.ui.adapter.GiftNewCommonAdapter;
 
 import java.util.List;
 
@@ -22,11 +18,8 @@ import java.util.List;
  * 分类页的复用Fragment
  */
 public class GiftCommonFragment extends AbsBaseFragment implements VolleyResult {
-    
-    private ImageView titleImg;
-    private RecyclerView giftRecyclerView;
-    private GiftCommonAdapter giftCommonAdapter;
-
+    private RecyclerView recyclerView;
+    private GiftNewCommonAdapter giftNewCommonAdapter;
 
     public static GiftCommonFragment newInstance(String url) {
         Bundle args = new Bundle();
@@ -35,6 +28,7 @@ public class GiftCommonFragment extends AbsBaseFragment implements VolleyResult 
         fragment.setArguments(args);
         return fragment;
     }
+
     @Override
     protected int setLayout() {
         return R.layout.fragment_gift_common;
@@ -42,36 +36,32 @@ public class GiftCommonFragment extends AbsBaseFragment implements VolleyResult 
 
     @Override
     protected void initViews() {
-        titleImg = byView(R.id.gift_common_title_img);
-        giftRecyclerView = byView(R.id.gift_common_rv);
+      recyclerView = byView(R.id.gift_common_rv);
     }
 
     @Override
     protected void initDatas() {
-
-        String url = getArguments().getString("url");
-        VolleyInstance.getInstance().startRequest(url,this);
-
-        giftCommonAdapter = new GiftCommonAdapter(context);
-        GridLayoutManager manager = new GridLayoutManager(context,2);
-        giftRecyclerView.setLayoutManager(manager);
-        giftRecyclerView.setAdapter(giftCommonAdapter);
-
+        String dataUrl = getArguments().getString("url");
+        giftNewCommonAdapter = new GiftNewCommonAdapter(context);
+        StaggeredGridLayoutManager sglm = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(sglm);
+        recyclerView.setAdapter(giftNewCommonAdapter);
+        VolleyInstance.getInstance().startRequest(dataUrl, this);
     }
 
     @Override
     public void success(String resultStr) {
-        Gson gson = new Gson();
-        GiftCommonBean giftCommonBean = gson.fromJson(resultStr,GiftCommonBean.class);
-        GiftCommonBean.DataBean dataBean = giftCommonBean.getData();
-        String url = dataBean.getCover_image();
-        Picasso.with(context).load(url).into(titleImg);
-        List<GiftCommonBean.DataBean.ItemsBean> datas = dataBean.getItems();
-        giftCommonAdapter.setDatas(datas);
+        // 解析数据
+        // 1.给gridview设置数据
+        // 2.gridView适配器处理2种行布局
+        GiftCommonBean giftCommonBean = new Gson().fromJson(resultStr, GiftCommonBean.class);
+        String imgUrl = giftCommonBean.getData().getCover_image();
+        List<GiftCommonBean.DataBean.ItemsBean> datas = giftCommonBean.getData().getItems();
+        giftNewCommonAdapter.setDatas(datas, imgUrl);
     }
 
     @Override
     public void failure() {
-        Toast.makeText(context, "请重新加载", Toast.LENGTH_SHORT).show();
+
     }
 }
