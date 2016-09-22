@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/20.
+ * 分类界面ListView实体类
  */
 public class CategoryLvBean {
 

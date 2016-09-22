@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/18.
+ * 轮播图适配器
  */
 public class RotateVpAdapter extends PagerAdapter{
 

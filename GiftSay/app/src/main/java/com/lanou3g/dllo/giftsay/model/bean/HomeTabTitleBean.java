@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/19.
+ * 首页TabTitle实体类
  */
 public class HomeTabTitleBean {
 

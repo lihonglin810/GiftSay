@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
 import com.lanou3g.dllo.giftsay.R;
+import com.lanou3g.dllo.giftsay.model.bean.ConstantBean;
 import com.lanou3g.dllo.giftsay.ui.adapter.GiftVpAdapter;
 
 import java.util.ArrayList;
@@ -18,12 +19,7 @@ import java.util.List;
 public class GiftFragment extends AbsBaseFragment{
     private ViewPager mGiftVp;
     private TabLayout mGiftTb;
-
     private List<Fragment> fragments;
-    private String meiriUrl = "http://api.liwushuo.com/v2/ranks_v2/ranks/1?limit=20&offset=0";
-    private String top100Url = "http://api.liwushuo.com/v2/ranks_v2/ranks/2?limit=20&offset=0";
-    private String duliUrl = "http://api.liwushuo.com/v2/ranks_v2/ranks/3?limit=20&offset=0";
-    private String newStarUrl = "http://api.liwushuo.com/v2/ranks_v2/ranks/4?limit=20&offset=0";
 
     public static GiftFragment newInstance() {
         Bundle args = new Bundle();
@@ -50,10 +46,10 @@ public class GiftFragment extends AbsBaseFragment{
 
     private void buildData() {
         fragments = new ArrayList<>();
-        fragments.add(GiftCommonFragment.newInstance(meiriUrl));
-        fragments.add(GiftCommonFragment.newInstance(top100Url));
-        fragments.add(GiftCommonFragment.newInstance(duliUrl));
-        fragments.add(GiftCommonFragment.newInstance(newStarUrl));
+        fragments.add(GiftCommonFragment.newInstance(ConstantBean.EVERYDAY_URL));
+        fragments.add(GiftCommonFragment.newInstance(ConstantBean.TOP100_URL));
+        fragments.add(GiftCommonFragment.newInstance(ConstantBean.INDEPENDENT_URL));
+        fragments.add(GiftCommonFragment.newInstance(ConstantBean.NEW_STAR_URL));
     }
 
     private void GiftPageTab() {

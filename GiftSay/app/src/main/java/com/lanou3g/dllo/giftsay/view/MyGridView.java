@@ -2,25 +2,24 @@ package com.lanou3g.dllo.giftsay.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.ListView;
+import android.widget.GridView;
 
 /**
- * Created by dllo on 16/9/19.
- * 自定义的ListView
+ * Created by dllo on 16/9/22.
+ * 自定义GridView
  */
-public class MyListView extends ListView{
-    public MyListView(Context context) {
+public class MyGridView extends GridView{
+    public MyGridView(Context context) {
         super(context);
     }
 
-    public MyListView(Context context, AttributeSet attrs) {
+    public MyGridView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public MyListView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MyGridView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
-
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2,MeasureSpec.AT_MOST);

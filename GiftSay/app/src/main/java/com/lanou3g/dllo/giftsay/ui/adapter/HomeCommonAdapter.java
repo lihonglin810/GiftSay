@@ -14,6 +14,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by dllo on 16/9/14.
  * 主页所有页适配器
@@ -73,14 +75,15 @@ public class HomeCommonAdapter extends BaseAdapter{
 
     private class HomeCommonViewHolder{
         TextView categoryTv,toptitleTv,bottomtitleTv,nicknameTv,likescountTv;
-        ImageView avatarImg,coverImg;
+        ImageView coverImg;
+        CircleImageView avatarImg;
         public HomeCommonViewHolder(View view){
             categoryTv = (TextView) view.findViewById(R.id.item_category);
             toptitleTv = (TextView) view.findViewById(R.id.item_top_title);
             bottomtitleTv = (TextView) view.findViewById(R.id.item_bottom_title);
             nicknameTv = (TextView) view.findViewById(R.id.item_nickname);
             likescountTv = (TextView) view.findViewById(R.id.item_likes_count);
-            avatarImg = (ImageView) view.findViewById(R.id.item_avatar_img);
+            avatarImg = (CircleImageView) view.findViewById(R.id.item_avatar_img);
             coverImg = (ImageView) view.findViewById(R.id.item_cover_img);
         }
     }

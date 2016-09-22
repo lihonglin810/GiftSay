@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/20.
+ * 分类RecyclerView实体类
  */
 public class CategoryRvBean {
 

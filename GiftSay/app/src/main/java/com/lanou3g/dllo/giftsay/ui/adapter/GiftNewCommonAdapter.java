@@ -17,6 +17,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/21.
+ * 榜单界面适配器
  */
 public class GiftNewCommonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 

@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/20.
- * 分类界面ListView的适配器
+ * 分类攻略界面ListView的适配器
  */
 public class CategoryListViewAdapter extends BaseAdapter{
 
@@ -72,7 +72,7 @@ public class CategoryListViewAdapter extends BaseAdapter{
         return convertView;
     }
 
-    private class CategoryListViewHolder{
+    class CategoryListViewHolder{
         ImageView img1,img2,img3;
         ImageView img4,img5,img6;
         TextView titleTv;

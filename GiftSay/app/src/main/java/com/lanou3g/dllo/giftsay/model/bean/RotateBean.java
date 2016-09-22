@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/18.
+ * 首页轮播图实体类
  */
 public class RotateBean implements Serializable{
 

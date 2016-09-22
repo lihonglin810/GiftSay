@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
 import com.lanou3g.dllo.giftsay.R;
+import com.lanou3g.dllo.giftsay.model.bean.ConstantBean;
 import com.lanou3g.dllo.giftsay.ui.adapter.CategoryAdapter;
 
 import java.util.ArrayList;
@@ -18,9 +19,6 @@ import java.util.List;
 public class CategoryFragment extends AbsBaseFragment{
     private ViewPager mCategoryVp;
     private TabLayout mCategoryTb;
-    private String strategyUrl = "http://api.liwushuo.com/v2/columns";
-    private String columnUrl = "http://api.liwushuo.com/v2/channel_groups/all";
-    private String singleUrl = "";
 
     public static CategoryFragment newInstance() {
         Bundle args = new Bundle();
@@ -46,8 +44,8 @@ public class CategoryFragment extends AbsBaseFragment{
 
     private void CategoryPageTab() {
         List<Fragment> datas = new ArrayList<>();
-        datas.add(CategoryStrategyFragment.newInstance(strategyUrl,columnUrl));
-        datas.add(CategorySingleFragment.newInstance(singleUrl));
+        datas.add(CategoryStrategyFragment.newInstance(ConstantBean.CATEGORY_RV_URL,ConstantBean.CATEGORY_LV_URL));
+        datas.add(CategorySingleFragment.newInstance(ConstantBean.CATEGORY_SINGLE_URL));
         CategoryAdapter categoryAdapter = new CategoryAdapter(getChildFragmentManager(),datas);
         mCategoryVp.setAdapter(categoryAdapter);
         mCategoryTb.setupWithViewPager(mCategoryVp);

@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/18.
+ * 主页推荐页面RecyclerView的适配器
  */
 public class HomeSelectRvAdapter extends RecyclerView.Adapter<HomeSelectRvAdapter.RvViewHolder>{
     private List<HomeSelectRvBean.DataBean.SecondaryBannersBean> datas;

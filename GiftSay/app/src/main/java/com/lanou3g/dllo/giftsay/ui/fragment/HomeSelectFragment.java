@@ -64,7 +64,7 @@ public class HomeSelectFragment extends AbsBaseFragment{
 
     @Override
     protected void initDatas() {
-        // 下面的数据
+        // 下面ListView的数据
         homeCommonAdapter = new HomeCommonAdapter(context);
         homeSelectLv.setAdapter(homeCommonAdapter);
         String url = getArguments().getString("url");

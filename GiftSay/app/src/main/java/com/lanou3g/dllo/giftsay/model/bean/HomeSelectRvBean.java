@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/18.
+ * 首页推荐页RecyclerView实体类
  */
 public class HomeSelectRvBean {
 

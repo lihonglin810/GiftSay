@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 
 /**
  * Created by dllo on 16/9/19.
+ * 自定义的RecyclerView
  */
 public class MyRecyclerView extends RecyclerView{
     public MyRecyclerView(Context context) {

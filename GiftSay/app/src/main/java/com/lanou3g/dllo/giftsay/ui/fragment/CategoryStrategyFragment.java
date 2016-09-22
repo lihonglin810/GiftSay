@@ -21,6 +21,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/19.
+ * 分类界面攻略Fragment
  */
 public class CategoryStrategyFragment extends AbsBaseFragment{
     private RecyclerView strategyRv;
@@ -81,7 +82,6 @@ public class CategoryStrategyFragment extends AbsBaseFragment{
                 CategoryLvBean categoryLvBean = gson.fromJson(resultStr,CategoryLvBean.class);
                 List<CategoryLvBean.DataBean.ChannelGroupsBean> datas = categoryLvBean.getData().getChannel_groups();
                 categoryListViewAdapter.setDatas(datas);
-                Log.d("CategoryStrategyFragmen", "datas.size():" + datas.size());
                 strategyLv.setAdapter(categoryListViewAdapter);
             }
             @Override

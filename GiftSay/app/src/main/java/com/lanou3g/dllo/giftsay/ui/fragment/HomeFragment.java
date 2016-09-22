@@ -1,23 +1,19 @@
 package com.lanou3g.dllo.giftsay.ui.fragment;
 
-import android.content.Context;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.lanou3g.dllo.giftsay.R;
+import com.lanou3g.dllo.giftsay.model.bean.ConstantBean;
 import com.lanou3g.dllo.giftsay.model.bean.HomePopBean;
 import com.lanou3g.dllo.giftsay.model.bean.HomeTabTitleBean;
 import com.lanou3g.dllo.giftsay.model.net.VolleyInstance;
@@ -33,31 +29,11 @@ import java.util.List;
  * 主页Fragment
  */
 public class HomeFragment extends AbsBaseFragment{
-    private String tabtitleUrl = "http://api.liwushuo.com/v2/channels/preset?gender=1&generation=1";
-
     private ViewPager mHomeVp;
     private TabLayout mHomeTab;
     private ImageView popWindowImg;
     private RecyclerView pwRecyclerView;
     private List<Fragment> fragments;
-
-    private String tuijianUrl = "http://api.liwushuo.com/v2/channels/100/items_v2?ad=2&gender=1&generation=1&limit=10&offset=0";
-    private String scrollUrl = "http://api.liwushuo.com/v2/secondary_banners?gender=1&generation=2";
-    private String lunboUrl = "http://api.liwushuo.com/v2/banners?channel";
-
-    private String girlfriendUrl = "http://api.liwushuo.com/v2/channels/10/items_v2?gender=1&limit=20&offset=0&generation=1";
-    private String haitaoUrl = "http://api.liwushuo.com/v2/channels/129/items_v2?gender=1&limit=20&offset=0&generation=1";
-    private String chuangyiUrl = "http://api.liwushuo.com/v2/channels/125/items_v2?gender=1&limit=20&offset=0&generation=1";
-    private String kejiUrl = "http://api.liwushuo.com/v2/channels/28/items_v2?gender=1&limit=20&offset=0&generation=1";
-    private String parentUrl = "http://api.liwushuo.com/v2/channels/6/items_v2?gender=1&limit=20&offset=0&generation=1";
-    private String jiyouUrl = "http://api.liwushuo.com/v2/channels/26/items_v2?gender=1&limit=20&offset=0&generation=1";
-    private String guimiUrl = "http://api.liwushuo.com/v2/channels/5/items_v2?gender=1&limit=20&offset=0&generation=1";
-    private String tongshiUrl = "http://api.liwushuo.com/v2/channels/17/items_v2?gender=1&limit=20&offset=0&generation=1";
-    private String babyUrl = "http://api.liwushuo.com/v2/channels/24/items_v2?gender=1&limit=20&offset=0&generation=1";
-    private String shejiganUrl = "http://api.liwushuo.com/v2/channels/127/items_v2?gender=1&limit=20&offset=0&generation=1";
-    private String wenyifengUrl = "http://api.liwushuo.com/v2/channels/14/items_v2?gender=1&limit=20&offset=0&generation=1";
-    private String qipaUrl = "http://api.liwushuo.com/v2/channels/126/items_v2?gender=1&limit=20&offset=0&generation=1";
-    private String mengmengdaUrl = "http://api.liwushuo.com/v2/channels/11/items_v2?gender=1&limit=20&offset=0&generation=1";
 
     public static HomeFragment newInstance() {
         Bundle args = new Bundle();
@@ -98,26 +74,26 @@ public class HomeFragment extends AbsBaseFragment{
 
     private void buildData() {
         fragments = new ArrayList<>();
-        fragments.add(HomeSelectFragment.newInstance(tuijianUrl,scrollUrl,lunboUrl));
-        fragments.add(HomeCommonFragment.newInstance(girlfriendUrl));
-        fragments.add(HomeCommonFragment.newInstance(haitaoUrl));
-        fragments.add(HomeCommonFragment.newInstance(chuangyiUrl));
-        fragments.add(HomeCommonFragment.newInstance(kejiUrl));
-        fragments.add(HomeCommonFragment.newInstance(parentUrl));
-        fragments.add(HomeCommonFragment.newInstance(jiyouUrl));
-        fragments.add(HomeCommonFragment.newInstance(guimiUrl));
-        fragments.add(HomeCommonFragment.newInstance(tongshiUrl));
-        fragments.add(HomeCommonFragment.newInstance(babyUrl));
-        fragments.add(HomeCommonFragment.newInstance(shejiganUrl));
-        fragments.add(HomeCommonFragment.newInstance(wenyifengUrl));
-        fragments.add(HomeCommonFragment.newInstance(qipaUrl));
-        fragments.add(HomeCommonFragment.newInstance(mengmengdaUrl));
+        fragments.add(HomeSelectFragment.newInstance(ConstantBean.RECOMMEND_URL,ConstantBean.SCROLL_URL,ConstantBean.CAROUSEL_URL));
+        fragments.add(HomeCommonFragment.newInstance(ConstantBean.GIRLFRIEND_URL));
+        fragments.add(HomeCommonFragment.newInstance(ConstantBean.SEA_AMOY_URL));
+        fragments.add(HomeCommonFragment.newInstance(ConstantBean.ORIGINAKITY_URL));
+        fragments.add(HomeCommonFragment.newInstance(ConstantBean.TECHNOLOGY_URL));
+        fragments.add(HomeCommonFragment.newInstance(ConstantBean.PARENT_URL));
+        fragments.add(HomeCommonFragment.newInstance(ConstantBean.SEND_JIYOU_URL));
+        fragments.add(HomeCommonFragment.newInstance(ConstantBean.SEND_GUIMI_URL));
+        fragments.add(HomeCommonFragment.newInstance(ConstantBean.SEND_TONGSHI_URL));
+        fragments.add(HomeCommonFragment.newInstance(ConstantBean.SEND_BABY_URL));
+        fragments.add(HomeCommonFragment.newInstance(ConstantBean.DESIGN_URL));
+        fragments.add(HomeCommonFragment.newInstance(ConstantBean.LITERATURE_URL));
+        fragments.add(HomeCommonFragment.newInstance(ConstantBean.CRACKPOT_URL));
+        fragments.add(HomeCommonFragment.newInstance(ConstantBean.ADORABLE_URL));
         HomeVpAdapter homeVpAdapter = new HomeVpAdapter(getChildFragmentManager(),fragments);
         mHomeVp.setAdapter(homeVpAdapter);
         mHomeTab.setupWithViewPager(mHomeVp);
         mHomeTab.setTabMode(TabLayout.MODE_SCROLLABLE);
         // 网络请求
-        VolleyInstance.getInstance().startRequest(tabtitleUrl, new VolleyResult() {
+        VolleyInstance.getInstance().startRequest(ConstantBean.TAB_TITLE_URL, new VolleyResult() {
             @Override
             public void success(String resultStr) {
                 Gson gson = new Gson();

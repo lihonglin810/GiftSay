@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/21.
+ * 分类攻略界面RecyclerView的适配器
  */
 public class CategoryRvAdapter extends RecyclerView.Adapter<CategoryRvAdapter.CategoryRvViewHolder>{
 
