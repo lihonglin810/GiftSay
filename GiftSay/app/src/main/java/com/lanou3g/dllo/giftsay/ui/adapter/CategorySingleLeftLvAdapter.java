@@ -9,20 +9,18 @@ import android.widget.TextView;
 
 import com.lanou3g.dllo.giftsay.R;
 import com.lanou3g.dllo.giftsay.model.bean.CateGorySingleBean;
-import com.lanou3g.dllo.giftsay.view.MyGridView;
 
 import java.util.List;
 
 /**
  * Created by dllo on 16/9/22.
- * 分类单品界面ListView适配器
+ * 分类单品界面左面的ListView适配器
  */
-public class CategorySingleLvAdapter extends BaseAdapter{
-    private List<CateGorySingleBean.DataBean.CategoriesBean> datas;
+public class CategorySingleLeftLvAdapter extends BaseAdapter{
     private Context context;
+    private List<CateGorySingleBean.DataBean.CategoriesBean> datas;
 
-
-    public CategorySingleLvAdapter(Context context) {
+    public CategorySingleLeftLvAdapter(Context context) {
         this.context = context;
     }
 
@@ -48,32 +46,22 @@ public class CategorySingleLvAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        CategorySingleViewHolder holder = null;
+        CategorySingleLeftLvViewHolder holder = null;
         if (convertView == null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_category_single_lv,parent,false);
-            holder = new CategorySingleViewHolder(convertView);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_category_single_left_lv,parent,false);
+            holder = new CategorySingleLeftLvViewHolder(convertView);
             convertView.setTag(holder);
         }else {
-            holder = (CategorySingleViewHolder) convertView.getTag();
+            holder = (CategorySingleLeftLvViewHolder) convertView.getTag();
         }
-
         CateGorySingleBean.DataBean.CategoriesBean bean = datas.get(position);
-        if (bean != null){
-            holder.singleTv.setText(bean.getName());
-            holder.adapter.setDatas(bean.getSubcategories());
-            holder.gridView.setAdapter(holder.adapter);
-        }
+        holder.nameTv.setText(bean.getName());
         return convertView;
     }
-
-    class CategorySingleViewHolder{
-        TextView singleTv;
-        CategorySingleLvGvAdapter adapter;
-        MyGridView gridView;
-        public CategorySingleViewHolder(View view) {
-            singleTv = (TextView) view.findViewById(R.id.item_category_single_tv);
-            adapter = new CategorySingleLvGvAdapter(context);
-            gridView = (MyGridView) view.findViewById(R.id.item_category_single_gv);
+    class CategorySingleLeftLvViewHolder{
+        TextView nameTv;
+        public CategorySingleLeftLvViewHolder(View view) {
+            nameTv = (TextView) view.findViewById(R.id.item_category_single_left_tv);
         }
     }
 }

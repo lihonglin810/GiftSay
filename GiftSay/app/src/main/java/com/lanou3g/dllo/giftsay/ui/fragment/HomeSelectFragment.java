@@ -8,8 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import com.google.gson.Gson;
 import com.lanou3g.dllo.giftsay.R;
+import com.lanou3g.dllo.giftsay.model.bean.ConstantBean;
 import com.lanou3g.dllo.giftsay.model.bean.HomeCommonBean;
 import com.lanou3g.dllo.giftsay.model.bean.HomeSelectRvBean;
 import com.lanou3g.dllo.giftsay.model.bean.RotateBean;
@@ -20,6 +23,8 @@ import com.lanou3g.dllo.giftsay.ui.adapter.HomeSelectRvAdapter;
 import com.lanou3g.dllo.giftsay.ui.adapter.RotateVpAdapter;
 import com.lanou3g.dllo.giftsay.view.MyListView;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,6 +44,7 @@ public class HomeSelectFragment extends AbsBaseFragment{
     private LinearLayout pointLl;// 轮播状态改变的小圆点容器
     private List<RotateBean.DataBean.BannersBean> datas;
     private RotateVpAdapter vpAdapter;
+    private TextView dateTv;
 
     public static HomeSelectFragment newInstance(String url,String sUrl,String lunboUrl) {
         Bundle args = new Bundle();
@@ -60,10 +66,25 @@ public class HomeSelectFragment extends AbsBaseFragment{
         homeSelectRv = byView(R.id.home_select_rv);
         viewPager = byView(R.id.rotate_vp);
         pointLl = byView(R.id.rotate_point_container);
+        dateTv = byView(R.id.jingxuan_date);
     }
 
     @Override
     protected void initDatas() {
+        //时间获取当前时间
+        String date1 = null;
+        Calendar calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
+        calendar.setTime(date);
+        int weekIndex = calendar.get(Calendar.DAY_OF_WEEK);
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int day = calendar.get(Calendar.DATE);
+        if (weekIndex < 1 || weekIndex > 7) {
+            date1 = null;
+        }else {
+            date1 = ConstantBean.WEEK[weekIndex - 1];
+        }
+        dateTv.setText(month + "月" + day + "日 " + date1);
         // 下面ListView的数据
         homeCommonAdapter = new HomeCommonAdapter(context);
         homeSelectLv.setAdapter(homeCommonAdapter);

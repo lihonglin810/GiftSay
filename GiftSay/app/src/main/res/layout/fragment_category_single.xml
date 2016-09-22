@@ -2,20 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
+    android:background="#ffffff"
     android:layout_height="match_parent">
     <ListView
         android:id="@+id/category_single_left_lv"
         android:layout_width="0dp"
         android:layout_weight="1"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:cacheColorHint="#f03"
+        android:divider="@null">
     </ListView>
     <ListView
         android:id="@+id/category_single_right_lv"
         android:layout_width="0dp"
         android:layout_weight="3"
         android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:divider="@null"
         >
     </ListView>
+
 
 </LinearLayout>

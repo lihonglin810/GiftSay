@@ -1,6 +1,7 @@
 package com.lanou3g.dllo.giftsay.ui.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,6 +60,21 @@ public class GiftNewCommonAdapter extends RecyclerView.Adapter<RecyclerView.View
             return TYPE_ONE_IMG;
         } else {
             return TYPE_LIST;
+        }
+    }
+
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
+        if (manager instanceof GridLayoutManager){
+            final GridLayoutManager gridLayoutManager = (GridLayoutManager) manager;
+            gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(int position) {
+                    return getItemViewType(position) == TYPE_ONE_IMG ? gridLayoutManager.getSpanCount() : 1;
+                }
+            });
         }
     }
 

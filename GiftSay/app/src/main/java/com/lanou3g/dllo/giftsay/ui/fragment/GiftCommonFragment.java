@@ -1,6 +1,7 @@
 package com.lanou3g.dllo.giftsay.ui.fragment;
 
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
@@ -43,8 +44,8 @@ public class GiftCommonFragment extends AbsBaseFragment implements VolleyResult 
     protected void initDatas() {
         String dataUrl = getArguments().getString("url");
         giftNewCommonAdapter = new GiftNewCommonAdapter(context);
-        StaggeredGridLayoutManager sglm = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(sglm);
+        GridLayoutManager manager = new GridLayoutManager(context,2);
+        recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(giftNewCommonAdapter);
         VolleyInstance.getInstance().startRequest(dataUrl, this);
     }
