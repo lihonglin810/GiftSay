@@ -1,7 +1,12 @@
 package com.lanou3g.dllo.giftsay.ui.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.lanou3g.dllo.giftsay.R;
@@ -22,6 +27,9 @@ public class CategorySingleFragment extends AbsBaseFragment implements VolleyRes
     private ListView singleLeftLv;
     private CategorySingleRightLvAdapter categorySingleRightLvAdapter;
     private CategorySingleLeftLvAdapter categorySingleLeftLvAdapter;
+    private TextView titleTv;
+    private int lastposition;
+
     public static CategorySingleFragment newInstance(String url) {
         Bundle args = new Bundle();
         args.putString("url",url);
@@ -48,7 +56,25 @@ public class CategorySingleFragment extends AbsBaseFragment implements VolleyRes
     }
 
     private void LeftlistToRightlist() {
+        singleLeftLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int firstVisibleItem = singleRightLv.getFirstVisiblePosition();
+                updateLeftListview(firstVisibleItem, position);
+            }
+        });
+    }
 
+    private void updateLeftListview(int firstVisibleItem, int position) {
+        TextView lastItemTv = (TextView) singleLeftLv.findViewWithTag(lastposition);
+        if (lastItemTv != null){
+            lastItemTv.setTextColor(Color.BLACK);
+        }
+        TextView currentTextView = (TextView) singleLeftLv.findViewWithTag(position);
+        if (currentTextView != null){
+            currentTextView.setText(Color.RED);
+        }
+        lastposition = position;
     }
 
     @Override

@@ -62,7 +62,6 @@ public class CategoryListViewAdapter extends BaseAdapter{
         if (bean != null){
             holder.titleTv.setText(bean.getName());
             Picasso.with(context).load(bean.getChannels().get(0).getCover_image_url()).into(holder.img1);
-            Log.d("156", datas.get(position).getChannels().get(position).getCover_image_url());
             Picasso.with(context).load(bean.getChannels().get(1).getCover_image_url()).into(holder.img2);
             Picasso.with(context).load(bean.getChannels().get(2).getCover_image_url()).into(holder.img3);
             Picasso.with(context).load(bean.getChannels().get(3).getCover_image_url()).into(holder.img4);
