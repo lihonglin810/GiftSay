@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -27,8 +28,6 @@ public class CategorySingleFragment extends AbsBaseFragment implements VolleyRes
     private ListView singleLeftLv;
     private CategorySingleRightLvAdapter categorySingleRightLvAdapter;
     private CategorySingleLeftLvAdapter categorySingleLeftLvAdapter;
-    private TextView titleTv;
-    private int lastposition;
 
     public static CategorySingleFragment newInstance(String url) {
         Bundle args = new Bundle();
@@ -52,7 +51,23 @@ public class CategorySingleFragment extends AbsBaseFragment implements VolleyRes
     protected void initDatas() {
         String singleUrl = getArguments().getString("url");
         VolleyInstance.getInstance().startRequest(singleUrl,this);
-        LeftlistToRightlist(); // 左边点击事件右边跟着跳
+//        LeftlistToRightlist(); // 左边点击事件右边跟着跳
+//        RightlistToLeftlist(); // 右边的滑动监听
+    }
+
+    private void RightlistToLeftlist() {
+        singleRightLv.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                singleLeftLv.setSelection(firstVisibleItem - 1);
+                categorySingleLeftLvAdapter.setSelectPosition(firstVisibleItem - 1);
+            }
+        });
     }
 
     private void LeftlistToRightlist() {
@@ -60,22 +75,27 @@ public class CategorySingleFragment extends AbsBaseFragment implements VolleyRes
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 int firstVisibleItem = singleRightLv.getFirstVisiblePosition();
-                updateLeftListview(firstVisibleItem, position);
+                categorySingleLeftLvAdapter.setSelectPosition(position);
+                categorySingleLeftLvAdapter.notifyDataSetChanged();
+                singleRightLv.setSelection(position);
+                singleLeftLv.setSelection(firstVisibleItem);
             }
         });
+        singleLeftLv.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+            }
+        });
+
     }
 
-    private void updateLeftListview(int firstVisibleItem, int position) {
-        TextView lastItemTv = (TextView) singleLeftLv.findViewWithTag(lastposition);
-        if (lastItemTv != null){
-            lastItemTv.setTextColor(Color.BLACK);
-        }
-        TextView currentTextView = (TextView) singleLeftLv.findViewWithTag(position);
-        if (currentTextView != null){
-            currentTextView.setText(Color.RED);
-        }
-        lastposition = position;
-    }
+
 
     @Override
     public void success(String resultStr) {
@@ -88,6 +108,36 @@ public class CategorySingleFragment extends AbsBaseFragment implements VolleyRes
         categorySingleLeftLvAdapter.setDatas(datas);
         singleLeftLv.setAdapter(categorySingleLeftLvAdapter);
         singleRightLv.setAdapter(categorySingleRightLvAdapter);
+
+        singleLeftLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                categorySingleLeftLvAdapter.setSelectPosition(position);
+                categorySingleLeftLvAdapter.notifyDataSetChanged();
+                singleRightLv.setSelection(position);
+            }
+        });
+        singleRightLv.setOnScrollListener(new AbsListView.OnScrollListener() {
+            private int scrollState;
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                this.scrollState = scrollState;
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {
+                    return;
+                }
+                if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
+                    return;
+                }
+                singleLeftLv.setSelection(firstVisibleItem);
+                singleLeftLv.smoothScrollToPositionFromTop(firstVisibleItem - 1,0);
+                categorySingleLeftLvAdapter.setSelectPosition(firstVisibleItem);
+                categorySingleLeftLvAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     @Override
