@@ -33,7 +33,4 @@ public class HomeVpAdapter extends FragmentPagerAdapter{
     public int getCount() {
         return mfragments.size();
     }
-//    public CharSequence getPageTitle(int position){
-//        return titles[position];
-//    }
 }

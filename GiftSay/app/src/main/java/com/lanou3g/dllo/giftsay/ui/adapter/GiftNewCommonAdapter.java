@@ -99,7 +99,7 @@ public class GiftNewCommonAdapter extends RecyclerView.Adapter<RecyclerView.View
                 Picasso.with(context).load(itemsBean.getCover_image_url()).into(holderList.coverImg);
                 holderList.shortDescriptionTv.setText(itemsBean.getShort_description());
                 holderList.nameTv.setText(itemsBean.getName());
-                holderList.priceTv.setText(itemsBean.getPrice());
+                holderList.priceTv.setText("¥ " + itemsBean.getPrice());
                 break;
         }
     }

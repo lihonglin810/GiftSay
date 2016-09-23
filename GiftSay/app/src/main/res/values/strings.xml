@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">GiftSay</string>
+    <string name="category_fragment_title_strategy">攻略</string>
+    <string name="category_fragment_title_single">单品</string>
+    <string name="gift_tab_title_everyday">每日推荐</string>
+    <string name="gift_tab_title_top100">TOP100</string>
+    <string name="gift_tab_title_independent">独立原创榜</string>
+    <string name="gift_tab_title_newStar">新星榜</string>
+
 </resources>

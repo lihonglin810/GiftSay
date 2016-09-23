@@ -1,13 +1,10 @@
 package com.lanou3g.dllo.giftsay.ui.fragment;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.lanou3g.dllo.giftsay.R;
@@ -51,51 +48,7 @@ public class CategorySingleFragment extends AbsBaseFragment implements VolleyRes
     protected void initDatas() {
         String singleUrl = getArguments().getString("url");
         VolleyInstance.getInstance().startRequest(singleUrl,this);
-//        LeftlistToRightlist(); // 左边点击事件右边跟着跳
-//        RightlistToLeftlist(); // 右边的滑动监听
     }
-
-    private void RightlistToLeftlist() {
-        singleRightLv.setOnScrollListener(new AbsListView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
-
-            }
-
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                singleLeftLv.setSelection(firstVisibleItem - 1);
-                categorySingleLeftLvAdapter.setSelectPosition(firstVisibleItem - 1);
-            }
-        });
-    }
-
-    private void LeftlistToRightlist() {
-        singleLeftLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int firstVisibleItem = singleRightLv.getFirstVisiblePosition();
-                categorySingleLeftLvAdapter.setSelectPosition(position);
-                categorySingleLeftLvAdapter.notifyDataSetChanged();
-                singleRightLv.setSelection(position);
-                singleLeftLv.setSelection(firstVisibleItem);
-            }
-        });
-        singleLeftLv.setOnScrollListener(new AbsListView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
-
-            }
-
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-
-            }
-        });
-
-    }
-
-
 
     @Override
     public void success(String resultStr) {
@@ -108,7 +61,7 @@ public class CategorySingleFragment extends AbsBaseFragment implements VolleyRes
         categorySingleLeftLvAdapter.setDatas(datas);
         singleLeftLv.setAdapter(categorySingleLeftLvAdapter);
         singleRightLv.setAdapter(categorySingleRightLvAdapter);
-
+        // 左边点击事件右边跟着跳
         singleLeftLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -117,6 +70,7 @@ public class CategorySingleFragment extends AbsBaseFragment implements VolleyRes
                 singleRightLv.setSelection(position);
             }
         });
+        // 右边的滑动监听
         singleRightLv.setOnScrollListener(new AbsListView.OnScrollListener() {
             private int scrollState;
             @Override

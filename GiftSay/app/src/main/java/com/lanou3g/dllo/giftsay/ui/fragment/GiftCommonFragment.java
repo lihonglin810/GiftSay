@@ -3,7 +3,6 @@ package com.lanou3g.dllo.giftsay.ui.fragment;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.google.gson.Gson;
 import com.lanou3g.dllo.giftsay.R;

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.lanou3g.dllo.giftsay.R;
@@ -15,7 +14,6 @@ import com.lanou3g.dllo.giftsay.model.net.VolleyResult;
 import com.lanou3g.dllo.giftsay.ui.adapter.CategoryListViewAdapter;
 import com.lanou3g.dllo.giftsay.ui.adapter.CategoryRvAdapter;
 import com.lanou3g.dllo.giftsay.view.MyListView;
-import com.lanou3g.dllo.giftsay.view.MyRecyclerView;
 
 import java.util.List;
 

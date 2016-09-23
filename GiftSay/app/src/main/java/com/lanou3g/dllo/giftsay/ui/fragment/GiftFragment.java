@@ -56,9 +56,9 @@ public class GiftFragment extends AbsBaseFragment{
         GiftVpAdapter giftVpAdapter = new GiftVpAdapter(getChildFragmentManager(),fragments);
         mGiftVp.setAdapter(giftVpAdapter);
         mGiftTb.setupWithViewPager(mGiftVp);
-        mGiftTb.getTabAt(0).setText("每日推荐");
-        mGiftTb.getTabAt(1).setText("TOP100");
-        mGiftTb.getTabAt(2).setText("独立原创榜");
-        mGiftTb.getTabAt(3).setText("新星榜");
+        mGiftTb.getTabAt(0).setText(getResources().getString(R.string.gift_tab_title_everyday));
+        mGiftTb.getTabAt(1).setText(getResources().getString(R.string.gift_tab_title_top100));
+        mGiftTb.getTabAt(2).setText(getResources().getString(R.string.gift_tab_title_independent));
+        mGiftTb.getTabAt(3).setText(getResources().getString(R.string.gift_tab_title_newStar));
     }
 }

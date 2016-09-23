@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
 import com.google.gson.Gson;
@@ -18,6 +19,7 @@ import com.lanou3g.dllo.giftsay.model.bean.HomePopBean;
 import com.lanou3g.dllo.giftsay.model.bean.HomeTabTitleBean;
 import com.lanou3g.dllo.giftsay.model.net.VolleyInstance;
 import com.lanou3g.dllo.giftsay.model.net.VolleyResult;
+import com.lanou3g.dllo.giftsay.ui.activity.SearchActivity;
 import com.lanou3g.dllo.giftsay.ui.adapter.HomePopAdapter;
 import com.lanou3g.dllo.giftsay.ui.adapter.HomeVpAdapter;
 
@@ -32,6 +34,8 @@ public class HomeFragment extends AbsBaseFragment{
     private ViewPager mHomeVp;
     private TabLayout mHomeTab;
     private ImageView popWindowImg;
+    private LinearLayout titleLayout;
+
     private RecyclerView pwRecyclerView;
     private List<Fragment> fragments;
 
@@ -52,6 +56,7 @@ public class HomeFragment extends AbsBaseFragment{
         mHomeVp = byView(R.id.homepage_vp);
         mHomeTab = byView(R.id.homepage_tb);
         popWindowImg = byView(R.id.pop_window_img);
+        titleLayout = byView(R.id.home_title_layout);
     }
 
     @Override
@@ -64,8 +69,13 @@ public class HomeFragment extends AbsBaseFragment{
             @Override
             public void onClick(View v) {
                 showPopWindow();
-//                mHomeTab.setVisibility(R.layout.change_home);
                 popWindowImg.setImageResource(R.mipmap.icon_btn_arrow_up);
+            }
+        });
+        titleLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goTo(SearchActivity.class);
             }
         });
 

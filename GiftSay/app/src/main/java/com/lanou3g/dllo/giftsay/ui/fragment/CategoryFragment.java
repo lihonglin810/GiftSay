@@ -49,7 +49,7 @@ public class CategoryFragment extends AbsBaseFragment{
         CategoryAdapter categoryAdapter = new CategoryAdapter(getChildFragmentManager(),datas);
         mCategoryVp.setAdapter(categoryAdapter);
         mCategoryTb.setupWithViewPager(mCategoryVp);
-        mCategoryTb.getTabAt(0).setText("攻略");
-        mCategoryTb.getTabAt(1).setText("单品");
+        mCategoryTb.getTabAt(0).setText(getResources().getString(R.string.category_fragment_title_strategy));
+        mCategoryTb.getTabAt(1).setText(getResources().getString(R.string.category_fragment_title_single));
     }
 }
