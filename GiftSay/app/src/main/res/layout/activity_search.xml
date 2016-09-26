@@ -24,13 +24,13 @@
                 android:layout_marginLeft="10dp"
                 android:layout_gravity="center_vertical"
                 android:src="@mipmap/icon_search_grey"/>
-            <TextView
+            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:padding="6dp"
                 android:layout_margin="6dp"
-                android:text=" 中秋送你大爷好礼"
+                android:hint=" 中秋送你大爷好礼"
                 android:background="@drawable/home_title_shape"
                 android:textSize="14sp"/>
         </LinearLayout>

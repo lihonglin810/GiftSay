@@ -88,7 +88,6 @@ public class GiftNewCommonAdapter extends RecyclerView.Adapter<RecyclerView.View
                 ViewGroup.LayoutParams params = holderOneImg.coverImageView.getLayoutParams();
                 params.width = ScreenSizeUtil.getScreenWidth(context);
                 holderOneImg.coverImageView.setLayoutParams(params);
-
                 Picasso.with(context).load(imgUrl).into(holderOneImg.coverImageView);
                 break;
             case TYPE_LIST:
