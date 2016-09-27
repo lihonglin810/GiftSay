@@ -12,7 +12,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <TextView
             android:id="@+id/category_strategy_title_tv"
             android:layout_width="wrap_content"
@@ -21,24 +20,27 @@
             android:layout_marginLeft="10dp"
             android:text="栏目"
             android:textSize="12sp" />
-
-        <ImageView
-            android:id="@+id/right"
+        <LinearLayout
+            android:id="@+id/item_strategy_show_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_margin="5dp"
-            android:src="@mipmap/mq_arrow_right" />
-
-        <TextView
-            android:id="@+id/category_strategy_all_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/right"
-            android:text="查看全部"
-            android:textColor="#1d1d1d"
-            android:textSize="10sp" />
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true">
+            <TextView
+                android:id="@+id/category_strategy_all_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="查看全部"
+                android:textColor="#1d1d1d"
+                android:textSize="10sp" />
+            <ImageView
+                android:id="@+id/right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:src="@mipmap/mq_arrow_right" />
+        </LinearLayout>
     </RelativeLayout>
 
     <LinearLayout

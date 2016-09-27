@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.lanou3g.dllo.giftsay.R;
@@ -75,6 +76,7 @@ public class CategoryListViewAdapter extends BaseAdapter{
         ImageView img1,img2,img3;
         ImageView img4,img5,img6;
         TextView titleTv;
+        LinearLayout showLayout;
         public CategoryListViewHolder(View view) {
             titleTv = (TextView) view.findViewById(R.id.category_strategy_title_tv);
             img1 = (ImageView) view.findViewById(R.id.item_category_lv_img1);
@@ -83,6 +85,7 @@ public class CategoryListViewAdapter extends BaseAdapter{
             img4 = (ImageView) view.findViewById(R.id.item_category_lv_img4);
             img5 = (ImageView) view.findViewById(R.id.item_category_lv_img5);
             img6 = (ImageView) view.findViewById(R.id.item_category_lv_img6);
+            showLayout = (LinearLayout) view.findViewById(R.id.item_strategy_show_layout);
         }
     }
 }

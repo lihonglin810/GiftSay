@@ -63,13 +63,12 @@ public class HomeFragment extends AbsBaseFragment{
     protected void initDatas() {
         // 数据
         buildData();
-        HomePageTab();
         // 点击图片下拉出来popWindow
         popWindowImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPopWindow();
                 popWindowImg.setImageResource(R.mipmap.icon_btn_arrow_up);
+                showPopWindow();
             }
         });
         titleLayout.setOnClickListener(new View.OnClickListener() {
@@ -127,18 +126,26 @@ public class HomeFragment extends AbsBaseFragment{
         PopupWindow pw = new PopupWindow(context);
         pw.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
         pw.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
-
         View view = getLayoutInflater(null).inflate(R.layout.pop_window,null);
         pwRecyclerView = (RecyclerView) view.findViewById(R.id.pop_window_rv);
-        HomePopAdapter homePopAdapter = new HomePopAdapter(context);
-        List<HomePopBean> datas = new ArrayList<>();
-        for (int i = 0; i < 12; i++) {
-            datas.add(new HomePopBean("asdas"+i));
-        }
-        GridLayoutManager manager = new GridLayoutManager(context,4);
-        pwRecyclerView.setLayoutManager(manager);
-        homePopAdapter.setDatas(datas);
-        pwRecyclerView.setAdapter(homePopAdapter);
+        final HomePopAdapter homePopAdapter = new HomePopAdapter(context);
+        VolleyInstance.getInstance().startRequest(ConstantBean.TAB_TITLE_URL, new VolleyResult() {
+            @Override
+            public void success(String resultStr) {
+                Gson gson = new Gson();
+                HomeTabTitleBean homeTabTitleBean = gson.fromJson(resultStr,HomeTabTitleBean.class);
+                List<HomeTabTitleBean.DataBean.ChannelsBean> datas = homeTabTitleBean.getData().getChannels();
+                homePopAdapter.setDatas(datas);
+                GridLayoutManager manager = new GridLayoutManager(context,4);
+                pwRecyclerView.setLayoutManager(manager);
+                pwRecyclerView.setAdapter(homePopAdapter);
+            }
+
+            @Override
+            public void failure() {
+
+            }
+        });
         pw.setContentView(view);
         pw.setFocusable(true);
         pw.setOnDismissListener(new PopupWindow.OnDismissListener() {
@@ -150,9 +157,5 @@ public class HomeFragment extends AbsBaseFragment{
         pw.showAsDropDown(popWindowImg);
     }
 
-    // 上面的tablayout
-    private void HomePageTab() {
-
-    }
 
 }

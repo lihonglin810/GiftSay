@@ -128,7 +128,6 @@ public class HomeSelectFragment extends AbsBaseFragment{
 
     private void StartCarousel() {
         buildDatas();// 构造数据
-
         // 只是创建适配器,绑定适配器
         // 但是这里没有数据,buildDatas的网络成功回调里才能有数据
         vpAdapter = new RotateVpAdapter(context);

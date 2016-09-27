@@ -2,16 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/pop_shape">
-
+    android:layout_margin="5dp"
+    android:layout_height="match_parent">
     <TextView
-        android:id="@+id/item_pop_choose_tv"
-        android:layout_margin="10dp"
+        android:id="@+id/item_search_rv_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="435456"
+        android:padding="8dp"
         android:gravity="center"
-        android:text="精选"
-        android:textSize="12sp"/>
+        android:background="@drawable/item_search_shape"/>
 
 </LinearLayout>

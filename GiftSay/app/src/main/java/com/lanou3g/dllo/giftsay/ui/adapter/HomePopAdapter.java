@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.lanou3g.dllo.giftsay.R;
 import com.lanou3g.dllo.giftsay.model.bean.HomePopBean;
+import com.lanou3g.dllo.giftsay.model.bean.HomeTabTitleBean;
 
 import java.util.List;
 
@@ -18,14 +19,14 @@ import java.util.List;
  */
 public class HomePopAdapter extends RecyclerView.Adapter<HomePopAdapter.HomeViewHolder>{
 
-    private List<HomePopBean> datas;
+    private List<HomeTabTitleBean.DataBean.ChannelsBean> datas;
     private Context context;
 
     public HomePopAdapter(Context context) {
         this.context = context;
     }
 
-    public void setDatas(List<HomePopBean> datas) {
+    public void setDatas(List<HomeTabTitleBean.DataBean.ChannelsBean> datas) {
         this.datas = datas;
         notifyDataSetChanged();
     }
@@ -39,7 +40,8 @@ public class HomePopAdapter extends RecyclerView.Adapter<HomePopAdapter.HomeView
 
     @Override
     public void onBindViewHolder(HomeViewHolder holder, int position) {
-        holder.popchooseTv.setText(datas.get(position).getName());
+        HomeTabTitleBean.DataBean.ChannelsBean bean = datas.get(position);
+        holder.popchooseTv.setText(bean.getName());
     }
 
     @Override

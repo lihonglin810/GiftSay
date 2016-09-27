@@ -12,7 +12,10 @@ public final class ConstantBean {
      * 首页TAB数据
      */
     public static final String TAB_TITLE_URL = "http://api.liwushuo.com/v2/channels/preset?gender=1&generation=1";
-
+    /**
+     * 搜索热词
+     */
+    public static final String HOT_WORD_URL = "http://api.liwushuo.com/v2/search/hot_words";
     /**
      * 首页精选ListView的URl
      */

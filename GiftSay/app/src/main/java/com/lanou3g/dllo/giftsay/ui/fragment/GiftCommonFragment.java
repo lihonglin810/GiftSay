@@ -3,12 +3,16 @@ package com.lanou3g.dllo.giftsay.ui.fragment;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.lanou3g.dllo.giftsay.R;
 import com.lanou3g.dllo.giftsay.model.bean.GiftCommonBean;
+import com.lanou3g.dllo.giftsay.model.interfaces.OnRvItemClick;
 import com.lanou3g.dllo.giftsay.model.net.VolleyInstance;
 import com.lanou3g.dllo.giftsay.model.net.VolleyResult;
+import com.lanou3g.dllo.giftsay.ui.activity.LoginActivity;
+import com.lanou3g.dllo.giftsay.ui.activity.WebActivity;
 import com.lanou3g.dllo.giftsay.ui.adapter.GiftNewCommonAdapter;
 
 import java.util.List;
@@ -47,6 +51,7 @@ public class GiftCommonFragment extends AbsBaseFragment implements VolleyResult 
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(giftNewCommonAdapter);
         VolleyInstance.getInstance().startRequest(dataUrl, this);
+
     }
 
     @Override
@@ -56,8 +61,17 @@ public class GiftCommonFragment extends AbsBaseFragment implements VolleyResult 
         // 2.gridView适配器处理2种行布局
         GiftCommonBean giftCommonBean = new Gson().fromJson(resultStr, GiftCommonBean.class);
         String imgUrl = giftCommonBean.getData().getCover_image();
-        List<GiftCommonBean.DataBean.ItemsBean> datas = giftCommonBean.getData().getItems();
+        final List<GiftCommonBean.DataBean.ItemsBean> datas = giftCommonBean.getData().getItems();
         giftNewCommonAdapter.setDatas(datas, imgUrl);
+        giftNewCommonAdapter.setOnRvItemClick(new OnRvItemClick() {
+            @Override
+            public void onRvItemClickListener(int position, Object o) {
+                Bundle bundle = new Bundle();
+                String webUrl = datas.get(position).getUrl();
+                bundle.putString("weburl",webUrl);
+                goTo(WebActivity.class,bundle);
+            }
+        });
     }
 
     @Override

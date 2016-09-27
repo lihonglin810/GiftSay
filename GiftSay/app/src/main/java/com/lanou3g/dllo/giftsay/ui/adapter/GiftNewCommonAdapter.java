@@ -3,6 +3,7 @@ package com.lanou3g.dllo.giftsay.ui.adapter;
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.lanou3g.dllo.giftsay.R;
 import com.lanou3g.dllo.giftsay.model.bean.GiftCommonBean;
+import com.lanou3g.dllo.giftsay.model.interfaces.OnRvItemClick;
 import com.lanou3g.dllo.giftsay.utils.ScreenSizeUtil;
 import com.squareup.picasso.Picasso;
 
@@ -25,6 +27,7 @@ public class GiftNewCommonAdapter extends RecyclerView.Adapter<RecyclerView.View
     private Context context;
     private String imgUrl;
     private List<GiftCommonBean.DataBean.ItemsBean> datas;
+    private OnRvItemClick onRvItemClick;
 
     private static final int TYPE_ONE_IMG = 0;// 一张图片
     private static final int TYPE_LIST = 1;// 列表数据
@@ -37,6 +40,10 @@ public class GiftNewCommonAdapter extends RecyclerView.Adapter<RecyclerView.View
         this.datas = datas;
         this.imgUrl = imgUrl;
         notifyDataSetChanged();
+    }
+
+    public void setOnRvItemClick(OnRvItemClick onRvItemClick) {
+        this.onRvItemClick = onRvItemClick;
     }
 
     @Override
@@ -93,12 +100,23 @@ public class GiftNewCommonAdapter extends RecyclerView.Adapter<RecyclerView.View
             case TYPE_LIST:
                 // position从1开始
                 // 从集合中第0个数据开始取
-                HolderList holderList = (HolderList) holder;
+                final HolderList holderList = (HolderList) holder;
                 GiftCommonBean.DataBean.ItemsBean itemsBean = datas.get(position - 1);
                 Picasso.with(context).load(itemsBean.getCover_image_url()).into(holderList.coverImg);
                 holderList.shortDescriptionTv.setText(itemsBean.getShort_description());
                 holderList.nameTv.setText(itemsBean.getName());
                 holderList.priceTv.setText("¥ " + itemsBean.getPrice());
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (onRvItemClick != null){
+                            int position = holderList.getLayoutPosition();
+                            GiftCommonBean.DataBean.ItemsBean itemsBean = datas.get(position - 1);
+                            onRvItemClick.onRvItemClickListener(position,itemsBean);
+                        }
+                    }
+                });
                 break;
         }
     }
