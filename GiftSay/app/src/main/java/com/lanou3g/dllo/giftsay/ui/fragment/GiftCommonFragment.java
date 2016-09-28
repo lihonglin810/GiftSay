@@ -67,7 +67,7 @@ public class GiftCommonFragment extends AbsBaseFragment implements VolleyResult 
             @Override
             public void onRvItemClickListener(int position, Object o) {
                 Bundle bundle = new Bundle();
-                String webUrl = datas.get(position).getUrl();
+                String webUrl = datas.get(position - 1).getUrl();
                 bundle.putString("weburl",webUrl);
                 goTo(WebActivity.class,bundle);
             }

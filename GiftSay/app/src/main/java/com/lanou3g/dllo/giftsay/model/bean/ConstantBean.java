@@ -21,6 +21,10 @@ public final class ConstantBean {
      */
     public static final String RECOMMEND_URL = "http://api.liwushuo.com/v2/channels/100/items_v2?ad=2&gender=1&generation=1&limit=10&offset=0";
     /**
+     * 首页跳转详情拼接网址
+     */
+    public static final String HOME_PINJIE_URL = "http://hawaii.liwushuo.com/posts/";
+    /**
      * 首页精选的横向RecyclerView的URL
      */
     public static final String SCROLL_URL = "http://api.liwushuo.com/v2/secondary_banners?gender=1&generation=2";
@@ -100,6 +104,10 @@ public final class ConstantBean {
      * 分类页攻略RecyclerView
      */
     public static final String CATEGORY_RV_URL = "http://api.liwushuo.com/v2/columns";
+    /**
+     * 分类页攻略RecyclerView全部数据
+     */
+    public static final String CATEGORY_RV_ALL_URL = "http://api.liwushuo.com/v2/columns?limit=100&offset=0";
     /**
      * 分类页攻略ListView
      */

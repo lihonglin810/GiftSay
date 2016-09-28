@@ -17,6 +17,7 @@ import com.lanou3g.dllo.giftsay.R;
 import com.lanou3g.dllo.giftsay.model.bean.ConstantBean;
 import com.lanou3g.dllo.giftsay.model.bean.HomePopBean;
 import com.lanou3g.dllo.giftsay.model.bean.HomeTabTitleBean;
+import com.lanou3g.dllo.giftsay.model.interfaces.OnRvItemClick;
 import com.lanou3g.dllo.giftsay.model.net.VolleyInstance;
 import com.lanou3g.dllo.giftsay.model.net.VolleyResult;
 import com.lanou3g.dllo.giftsay.ui.activity.SearchActivity;
@@ -100,7 +101,6 @@ public class HomeFragment extends AbsBaseFragment{
         HomeVpAdapter homeVpAdapter = new HomeVpAdapter(getChildFragmentManager(),fragments);
         mHomeVp.setAdapter(homeVpAdapter);
         mHomeTab.setupWithViewPager(mHomeVp);
-        mHomeTab.setTabMode(TabLayout.MODE_SCROLLABLE);
         // 网络请求
         VolleyInstance.getInstance().startRequest(ConstantBean.TAB_TITLE_URL, new VolleyResult() {
             @Override
@@ -123,7 +123,7 @@ public class HomeFragment extends AbsBaseFragment{
 
     // 显示下拉popWindow菜单
     private void showPopWindow() {
-        PopupWindow pw = new PopupWindow(context);
+        final PopupWindow pw = new PopupWindow(context);
         pw.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
         pw.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         View view = getLayoutInflater(null).inflate(R.layout.pop_window,null);
@@ -139,6 +139,16 @@ public class HomeFragment extends AbsBaseFragment{
                 GridLayoutManager manager = new GridLayoutManager(context,4);
                 pwRecyclerView.setLayoutManager(manager);
                 pwRecyclerView.setAdapter(homePopAdapter);
+                homePopAdapter.setSelectPosition(mHomeVp.getCurrentItem());
+                homePopAdapter.setOnRvItemClick(new OnRvItemClick() {
+                    @Override
+                    public void onRvItemClickListener(int position, Object o) {
+                        homePopAdapter.setSelectPosition(position);
+                        mHomeTab.getTabAt(position).select();
+                        mHomeVp.setCurrentItem(position);
+                        pw.dismiss();
+                    }
+                });
             }
 
             @Override

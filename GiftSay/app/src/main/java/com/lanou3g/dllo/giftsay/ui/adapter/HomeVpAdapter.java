@@ -11,16 +11,12 @@ import java.util.List;
  * 主页viewpager适配器
  */
 public class HomeVpAdapter extends FragmentPagerAdapter{
+
     private List<Fragment> mfragments;
-    private String[] titles;
+
     public HomeVpAdapter(FragmentManager fm,List<Fragment> mfragments) {
         super(fm);
         this.mfragments = mfragments;
-        notifyDataSetChanged();
-    }
-
-    public void setTitles(String[] titles) {
-        this.titles = titles;
         notifyDataSetChanged();
     }
 

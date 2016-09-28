@@ -1,15 +1,19 @@
 package com.lanou3g.dllo.giftsay.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lanou3g.dllo.giftsay.R;
 import com.lanou3g.dllo.giftsay.model.bean.HomeCommonBean;
+import com.lanou3g.dllo.giftsay.ui.activity.WebActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -20,10 +24,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by dllo on 16/9/14.
  * 主页所有页适配器
  */
-public class HomeCommonAdapter extends BaseAdapter{
+public class HomeCommonAdapter extends BaseAdapter {
 
     private List<HomeCommonBean.DataBean.ItemsBean> datas;
     private Context context;
+    private String webUrl;
+    private int selectPosition;
 
     public HomeCommonAdapter(Context context) {
         this.context = context;
@@ -31,6 +37,11 @@ public class HomeCommonAdapter extends BaseAdapter{
 
     public void setDatas(List<HomeCommonBean.DataBean.ItemsBean> datas) {
         this.datas = datas;
+        notifyDataSetChanged();
+    }
+
+    public void setSelectPosition(int selectPosition) {
+        this.selectPosition = selectPosition;
         notifyDataSetChanged();
     }
 
@@ -50,7 +61,7 @@ public class HomeCommonAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         HomeCommonViewHolder holder = null;
         if (convertView == null){
             convertView = LayoutInflater.from(context).inflate(R.layout.item_home_common,parent,false);
@@ -69,10 +80,16 @@ public class HomeCommonAdapter extends BaseAdapter{
             holder.likescountTv.setText(count);
             Picasso.with(context).load(bean.getAuthor().getAvatar_url()).into(holder.avatarImg);
             Picasso.with(context).load(bean.getCover_image_url()).into(holder.coverImg);
+            holder.nicknameTv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "hahaha"+position, Toast.LENGTH_SHORT).show();
+                    
+                }
+            });
         }
         return convertView;
     }
-
     private class HomeCommonViewHolder{
         TextView categoryTv,toptitleTv,bottomtitleTv,nicknameTv,likescountTv;
         ImageView coverImg;

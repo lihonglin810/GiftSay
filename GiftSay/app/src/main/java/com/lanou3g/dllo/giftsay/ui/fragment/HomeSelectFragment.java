@@ -1,11 +1,14 @@
 package com.lanou3g.dllo.giftsay.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,6 +21,7 @@ import com.lanou3g.dllo.giftsay.model.bean.HomeSelectRvBean;
 import com.lanou3g.dllo.giftsay.model.bean.RotateBean;
 import com.lanou3g.dllo.giftsay.model.net.VolleyInstance;
 import com.lanou3g.dllo.giftsay.model.net.VolleyResult;
+import com.lanou3g.dllo.giftsay.ui.activity.WebActivity;
 import com.lanou3g.dllo.giftsay.ui.adapter.HomeCommonAdapter;
 import com.lanou3g.dllo.giftsay.ui.adapter.HomeSelectRvAdapter;
 import com.lanou3g.dllo.giftsay.ui.adapter.RotateVpAdapter;
@@ -94,14 +98,25 @@ public class HomeSelectFragment extends AbsBaseFragment{
             public void success(String resultStr) {
                 Gson gson = new Gson();
                 HomeCommonBean homeCommonBean = gson.fromJson(resultStr,HomeCommonBean.class);
-                List<HomeCommonBean.DataBean.ItemsBean> datas = homeCommonBean.getData().getItems();
+                final List<HomeCommonBean.DataBean.ItemsBean> datas = homeCommonBean.getData().getItems();
                 homeCommonAdapter.setDatas(datas);
+                homeSelectLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(context, WebActivity.class);
+                        String ida = datas.get(position).getId() + "";
+                        String url = "http://hawaii.liwushuo.com/posts/" + ida;
+                        intent.putExtra("weburl", url);
+                        startActivity(intent);
+                    }
+                });
             }
             @Override
             public void failure() {
 
             }
         });
+
         // 横向RecyclerView
         homeSelectRvAdapter = new HomeSelectRvAdapter(context);
         homeSelectRv.setAdapter(homeSelectRvAdapter);

@@ -112,7 +112,7 @@ public class GiftNewCommonAdapter extends RecyclerView.Adapter<RecyclerView.View
                     public void onClick(View v) {
                         if (onRvItemClick != null){
                             int position = holderList.getLayoutPosition();
-                            GiftCommonBean.DataBean.ItemsBean itemsBean = datas.get(position - 1);
+                            GiftCommonBean.DataBean.ItemsBean itemsBean = datas.get(position);
                             onRvItemClick.onRvItemClickListener(position,itemsBean);
                         }
                     }

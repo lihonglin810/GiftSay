@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.lanou3g.dllo.giftsay.R;
 import com.lanou3g.dllo.giftsay.model.bean.CategoryRvBean;
+import com.lanou3g.dllo.giftsay.model.interfaces.OnRvItemClick;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class CategoryRvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private Context context;
     private static final int TYPE_ONE_IMG = 1;// 一张图片
     private static final int TYPE_LIST = 0;// 列表数据
+    private OnRvItemClick onRvItemClick;
 
     public CategoryRvAdapter(Context context) {
         this.context = context;
@@ -33,6 +35,10 @@ public class CategoryRvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     public void setDatas(List<CategoryRvBean.DataBean.ColumnsBean> datas) {
         this.datas = datas;
         notifyDataSetChanged();
+    }
+
+    public void setOnRvItemClick(OnRvItemClick onRvItemClick) {
+        this.onRvItemClick = onRvItemClick;
     }
 
     @Override
@@ -51,7 +57,17 @@ public class CategoryRvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onRvItemClick != null){
+                    int position = holder.getLayoutPosition();
+                    CategoryRvBean.DataBean.ColumnsBean bean = datas.get(position - 1);
+                    onRvItemClick.onRvItemClickListener(position,bean);
+                }
+            }
+        });
         int type = getItemViewType(position);
             switch (type){
                 case TYPE_LIST:

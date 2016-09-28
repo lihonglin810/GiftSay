@@ -60,4 +60,9 @@ public abstract class AbsBaseFragment extends Fragment{
         intent.putExtras(extras);
         startActivity(intent);
     }
+    protected void goTo(Class<? extends AbsBaseActivity> to,String url){
+        Intent intent = new Intent(context,to);
+        intent.putExtra("url",url);
+        startActivity(intent);
+    }
 }

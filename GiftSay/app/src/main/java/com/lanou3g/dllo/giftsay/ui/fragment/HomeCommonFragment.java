@@ -1,13 +1,18 @@
 package com.lanou3g.dllo.giftsay.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.lanou3g.dllo.giftsay.R;
+import com.lanou3g.dllo.giftsay.model.bean.ConstantBean;
 import com.lanou3g.dllo.giftsay.model.bean.HomeCommonBean;
 import com.lanou3g.dllo.giftsay.model.net.VolleyInstance;
 import com.lanou3g.dllo.giftsay.model.net.VolleyResult;
+import com.lanou3g.dllo.giftsay.ui.activity.WebActivity;
 import com.lanou3g.dllo.giftsay.ui.adapter.HomeCommonAdapter;
 
 import java.util.List;
@@ -51,8 +56,18 @@ public class HomeCommonFragment extends AbsBaseFragment implements VolleyResult 
     public void success(String resultStr) {
         Gson gson = new Gson();
         HomeCommonBean homeCommonBean = gson.fromJson(resultStr,HomeCommonBean.class);
-        List<HomeCommonBean.DataBean.ItemsBean> datas = homeCommonBean.getData().getItems();
+        final List<HomeCommonBean.DataBean.ItemsBean> datas = homeCommonBean.getData().getItems();
         homeCommonAdapter.setDatas(datas);
+        commomlv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(context, WebActivity.class);
+                String ida = datas.get(position).getId() + "";
+                String url = ConstantBean.HOME_PINJIE_URL + ida;
+                intent.putExtra("weburl", url);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

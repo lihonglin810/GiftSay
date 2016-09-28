@@ -71,6 +71,7 @@
             android:layout_height="match_parent"
             app:tabSelectedTextColor="#ff1466"
             app:tabIndicatorColor="#ff1466"
+            app:tabMode="scrollable"
             android:layout_weight="1" />
 
         <ImageView
