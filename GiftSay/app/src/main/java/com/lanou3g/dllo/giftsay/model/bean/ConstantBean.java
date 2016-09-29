@@ -105,6 +105,10 @@ public final class ConstantBean {
      */
     public static final String CATEGORY_RV_URL = "http://api.liwushuo.com/v2/columns";
     /**
+     * 分类页攻略RecyclerView点击详情后面的拼接网址
+     */
+    public static final String CATEGORY_RV_PINJIE_URL = "?limit=100&offset=0";
+    /**
      * 分类页攻略RecyclerView全部数据
      */
     public static final String CATEGORY_RV_ALL_URL = "http://api.liwushuo.com/v2/columns?limit=100&offset=0";
@@ -116,6 +120,14 @@ public final class ConstantBean {
      * 分类页单品URL
      */
     public static final String CATEGORY_SINGLE_URL = "http://api.liwushuo.com/v2/item_categories/tree";
+    /**
+     * 分类单品点击详情前半部分网址
+     */
+    public static final String SINGLE_DETIALS_BEFORE_URL = "http://api.liwushuo.com/v2/item_subcategories/";
+    /**
+     * 分类单品点击详情后半部分网址
+     */
+    public static final String SINGLE_DETIALS_AFTER_URL = "/items?limit=50&offset=0";
 
     public static final String[] WEEK = {"星期天","星期一","星期二","星期三","星期四","星期五","星期六"};
 

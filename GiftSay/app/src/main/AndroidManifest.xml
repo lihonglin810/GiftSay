@@ -23,7 +23,9 @@
         <activity android:name=".ui.activity.LoginActivity" />
         <activity android:name=".ui.activity.SearchActivity" />
         <activity android:name=".ui.activity.WebActivity" />
-        <activity android:name=".ui.activity.ColumnActivity"></activity>
+        <activity android:name=".ui.activity.ColumnActivity" />
+        <activity android:name=".ui.activity.StrategyRvDetailsActivity" />
+        <activity android:name=".ui.activity.SingleDetailsActivity"></activity>
     </application>
 
 </manifest>

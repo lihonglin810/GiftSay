@@ -1,14 +1,18 @@
 package com.lanou3g.dllo.giftsay.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.lanou3g.dllo.giftsay.R;
 import com.lanou3g.dllo.giftsay.model.bean.CateGorySingleBean;
+import com.lanou3g.dllo.giftsay.model.bean.ConstantBean;
+import com.lanou3g.dllo.giftsay.ui.activity.SingleDetailsActivity;
 import com.lanou3g.dllo.giftsay.view.MyGridView;
 
 import java.util.List;
@@ -57,11 +61,22 @@ public class CategorySingleRightLvAdapter extends BaseAdapter{
             holder = (CategorySingleViewHolder) convertView.getTag();
         }
 
-        CateGorySingleBean.DataBean.CategoriesBean bean = datas.get(position);
+        final CateGorySingleBean.DataBean.CategoriesBean bean = datas.get(position);
         if (bean != null){
             holder.singleTv.setText(bean.getName());
             holder.adapter.setDatas(bean.getSubcategories());
             holder.gridView.setAdapter(holder.adapter);
+            holder.gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(context, SingleDetailsActivity.class);
+                    String partUrl = bean.getSubcategories().get(position).getId()+"";
+                    String url = ConstantBean.SINGLE_DETIALS_BEFORE_URL + partUrl + ConstantBean.SINGLE_DETIALS_AFTER_URL;
+                    intent.putExtra("url",url);
+                    intent.putExtra("name",bean.getSubcategories().get(position).getName());
+                    context.startActivity(intent);
+                }
+            });
         }
         return convertView;
     }

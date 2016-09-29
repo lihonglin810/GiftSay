@@ -63,7 +63,10 @@ public class CategoryRvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             public void onClick(View v) {
                 if (onRvItemClick != null){
                     int position = holder.getLayoutPosition();
-                    CategoryRvBean.DataBean.ColumnsBean bean = datas.get(position - 1);
+                    CategoryRvBean.DataBean.ColumnsBean bean = null;
+                    if (position < datas.size()){
+                        bean = datas.get(position);
+                    }
                     onRvItemClick.onRvItemClickListener(position,bean);
                 }
             }

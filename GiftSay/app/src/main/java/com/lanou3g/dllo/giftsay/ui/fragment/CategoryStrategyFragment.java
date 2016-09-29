@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -16,6 +18,7 @@ import com.lanou3g.dllo.giftsay.model.interfaces.OnRvItemClick;
 import com.lanou3g.dllo.giftsay.model.net.VolleyInstance;
 import com.lanou3g.dllo.giftsay.model.net.VolleyResult;
 import com.lanou3g.dllo.giftsay.ui.activity.ColumnActivity;
+import com.lanou3g.dllo.giftsay.ui.activity.StrategyRvDetailsActivity;
 import com.lanou3g.dllo.giftsay.ui.adapter.CategoryListViewAdapter;
 import com.lanou3g.dllo.giftsay.ui.adapter.CategoryRvAdapter;
 import com.lanou3g.dllo.giftsay.view.MyListView;
@@ -29,6 +32,7 @@ import java.util.List;
 public class CategoryStrategyFragment extends AbsBaseFragment{
     private RecyclerView strategyRv;
     private MyListView strategyLv;
+    private TextView lookALLTv;
     private CategoryListViewAdapter categoryListViewAdapter;
     private CategoryRvAdapter categoryRvAdapter;
 
@@ -50,11 +54,17 @@ public class CategoryStrategyFragment extends AbsBaseFragment{
     protected void initViews() {
         strategyRv = byView(R.id.category_strategy_rv);
         strategyLv = byView(R.id.category_strategy_lv);
+        lookALLTv = byView(R.id.strategy_all_tv);
     }
 
     @Override
     protected void initDatas() {
-
+        lookALLTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goTo(ColumnActivity.class, ConstantBean.CATEGORY_RV_ALL_URL);
+            }
+        });
         // 解析数据
         String rvUrl = getArguments().getString("rvUrl");
         String lvUrl = getArguments().getString("lvUrl");
@@ -64,7 +74,7 @@ public class CategoryStrategyFragment extends AbsBaseFragment{
                 categoryRvAdapter = new CategoryRvAdapter(context);
                 Gson gson = new Gson();
                 CategoryRvBean categoryRvBean = gson.fromJson(resultStr,CategoryRvBean.class);
-                List<CategoryRvBean.DataBean.ColumnsBean> datas = categoryRvBean.getData().getColumns();
+                final List<CategoryRvBean.DataBean.ColumnsBean> datas = categoryRvBean.getData().getColumns();
                 categoryRvAdapter.setDatas(datas);
                 strategyRv.setAdapter(categoryRvAdapter);
                 GridLayoutManager manager = new GridLayoutManager(context,3, LinearLayoutManager.HORIZONTAL,false);
@@ -75,7 +85,9 @@ public class CategoryStrategyFragment extends AbsBaseFragment{
                         int type = categoryRvAdapter.getItemViewType(position);
                         switch (type){
                             case 0: // 列表
-                                Toast.makeText(context, "点击的列表", Toast.LENGTH_SHORT).show();
+                                String id = String.valueOf(datas.get(position).getId());
+                                String url = ConstantBean.CATEGORY_RV_URL  + "/" + id + ConstantBean.CATEGORY_RV_PINJIE_URL;
+                                goTo(StrategyRvDetailsActivity.class,url);
                                 break;
                             case 1: // 最后的图片
                                 goTo(ColumnActivity.class, ConstantBean.CATEGORY_RV_ALL_URL);
