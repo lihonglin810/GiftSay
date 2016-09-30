@@ -1,12 +1,13 @@
 package com.lanou3g.dllo.giftsay.model.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by dllo on 16/9/20.
  * 分类界面ListView实体类
  */
-public class CategoryLvBean {
+public class CategoryLvBean implements Serializable{
 
     /**
      * code : 200
@@ -42,7 +43,7 @@ public class CategoryLvBean {
         this.message = message;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         /**
          * channels : [{"cover_image_url":"http://img03.liwushuo.com/image/160624/hbd7w1sf4.png","group_id":5,"icon_url":"http://img03.liwushuo.com/image/160414/kwzqtscoa.png-pw144","id":111,"items_count":1165,"name":"礼物","order":10,"status":0,"url":""},{"cover_image_url":"http://img03.liwushuo.com/image/160624/duk8guejk.png","group_id":5,"icon_url":"http://img02.liwushuo.com/image/160401/58kdnthsn.png-pw144","id":112,"items_count":597,"name":"家居","order":9,"status":0,"url":""},{"cover_image_url":"http://img01.liwushuo.com/image/160624/axk8i901f.png","group_id":5,"icon_url":"http://img03.liwushuo.com/image/160414/6eutomjeo.png-pw144","id":110,"items_count":707,"name":"穿搭","order":8,"status":0,"url":""},{"cover_image_url":"http://img01.liwushuo.com/image/160624/ayjeuhtji.png","group_id":5,"icon_url":"http://img01.liwushuo.com/image/160414/abuv6vssc.png-pw144","id":2,"items_count":568,"name":"美物","order":7,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160624/x5vlfqcn4.png","group_id":5,"icon_url":"http://img03.liwushuo.com/image/160401/5al9xhwg1.png-pw144","id":116,"items_count":196,"name":"饰品","order":6,"status":0,"url":""},{"cover_image_url":"http://img01.liwushuo.com/image/160624/otqmww3av.png","group_id":5,"icon_url":"http://img02.liwushuo.com/image/160401/5dgflkj6g.png-pw144","id":117,"items_count":198,"name":"鞋包","order":5,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160624/1kx5seb62.png","group_id":5,"icon_url":"http://img01.liwushuo.com/image/160401/58vv7n29y.png-pw144","id":118,"items_count":500,"name":"美食","order":5,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160624/38778o4e0.png","group_id":5,"icon_url":"http://img01.liwushuo.com/image/160401/fb7e1012t.png-pw144","id":113,"items_count":531,"name":"美护","order":4,"status":0,"url":""},{"cover_image_url":"http://img03.liwushuo.com/image/160624/s69ub7yiq.png","group_id":5,"icon_url":"http://img01.liwushuo.com/image/160401/59hgqd1x8.png-pw144","id":121,"items_count":215,"name":"数码","order":4,"status":0,"url":""},{"cover_image_url":"http://img01.liwushuo.com/image/160624/2ky6x596q.png","group_id":5,"icon_url":"http://img01.liwushuo.com/image/160401/u4r2a9q72.png-pw144","id":3,"items_count":90,"name":"手工","order":3,"status":0,"url":""},{"cover_image_url":"http://img03.liwushuo.com/image/160624/d1xtmp1ig.png","group_id":5,"icon_url":"http://img03.liwushuo.com/image/160401/i69bjp6bm.png-pw144","id":119,"items_count":51,"name":"母婴","order":0,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160624/y3aqzhu9v.png","group_id":5,"icon_url":"http://img02.liwushuo.com/image/160401/t9t9hzntc.png-pw144","id":122,"items_count":66,"name":"爱动漫","order":0,"status":0,"url":""},{"cover_image_url":"http://img03.liwushuo.com/image/160624/ym66pnx98.png","group_id":5,"icon_url":"http://img01.liwushuo.com/image/160401/3ziqypz1f.png-pw144","id":123,"items_count":31,"name":"爱运动","order":0,"status":0,"url":""},{"cover_image_url":"http://img02.liwushuo.com/image/160606/ad06sqrix.png","group_id":5,"icon_url":"http://img03.liwushuo.com/image/160401/6pdxbaqz2.png-pw144","id":124,"items_count":22,"name":"爱读书","order":0,"status":0,"url":""},{"cover_image_url":"http://img01.liwushuo.com/image/160624/xxvb0a8aj.png","group_id":5,"icon_url":"http://img02.liwushuo.com/image/160401/voku467wc.png-pw144","id":129,"items_count":165,"name":"海淘","order":0,"status":0,"url":""}]
          * id : 5
@@ -61,7 +62,7 @@ public class CategoryLvBean {
             this.channel_groups = channel_groups;
         }
 
-        public static class ChannelGroupsBean {
+        public static class ChannelGroupsBean implements Serializable{
             private int id;
             private String name;
             private int order;
@@ -120,7 +121,7 @@ public class CategoryLvBean {
                 this.channels = channels;
             }
 
-            public static class ChannelsBean {
+            public static class ChannelsBean implements Serializable{
                 private String cover_image_url;
                 private int group_id;
                 private String icon_url;

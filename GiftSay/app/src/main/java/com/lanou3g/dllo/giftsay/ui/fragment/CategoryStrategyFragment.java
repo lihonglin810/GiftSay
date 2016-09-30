@@ -1,14 +1,11 @@
 package com.lanou3g.dllo.giftsay.ui.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.gson.Gson;
 import com.lanou3g.dllo.giftsay.R;
 import com.lanou3g.dllo.giftsay.model.bean.CategoryLvBean;
@@ -68,6 +65,7 @@ public class CategoryStrategyFragment extends AbsBaseFragment{
         // 解析数据
         String rvUrl = getArguments().getString("rvUrl");
         String lvUrl = getArguments().getString("lvUrl");
+        // 上面的RecyclerView
         VolleyInstance.getInstance().startRequest(rvUrl, new VolleyResult() {
             @Override
             public void success(String resultStr) {
@@ -102,7 +100,7 @@ public class CategoryStrategyFragment extends AbsBaseFragment{
 
             }
         });
-
+        // 下面的ListView
         VolleyInstance.getInstance().startRequest(lvUrl, new VolleyResult() {
             @Override
             public void success(String resultStr) {

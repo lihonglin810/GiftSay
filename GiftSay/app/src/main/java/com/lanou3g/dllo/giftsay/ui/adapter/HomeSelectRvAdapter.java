@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import com.lanou3g.dllo.giftsay.R;
 import com.lanou3g.dllo.giftsay.model.bean.HomeSelectRvBean;
+import com.lanou3g.dllo.giftsay.model.interfaces.OnRvItemClick;
 import com.lanou3g.dllo.giftsay.utils.ScreenSizeUtil;
 import com.squareup.picasso.Picasso;
 
@@ -21,6 +22,7 @@ import java.util.List;
 public class HomeSelectRvAdapter extends RecyclerView.Adapter<HomeSelectRvAdapter.RvViewHolder>{
     private List<HomeSelectRvBean.DataBean.SecondaryBannersBean> datas;
     private Context context;
+    private OnRvItemClick onRvItemClick;
 
     public HomeSelectRvAdapter(Context context) {
         this.context = context;
@@ -29,6 +31,10 @@ public class HomeSelectRvAdapter extends RecyclerView.Adapter<HomeSelectRvAdapte
     public void setDatas(List<HomeSelectRvBean.DataBean.SecondaryBannersBean> datas) {
         this.datas = datas;
         notifyDataSetChanged();
+    }
+
+    public void setOnRvItemClick(OnRvItemClick onRvItemClick) {
+        this.onRvItemClick = onRvItemClick;
     }
 
     @Override
@@ -46,8 +52,16 @@ public class HomeSelectRvAdapter extends RecyclerView.Adapter<HomeSelectRvAdapte
     }
 
     @Override
-    public void onBindViewHolder(RvViewHolder holder, int position) {
+    public void onBindViewHolder(final RvViewHolder holder, int position) {
         Picasso.with(context).load(datas.get(position).getImage_url()).into(holder.imageView);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int p = holder.getLayoutPosition();
+                HomeSelectRvBean.DataBean.SecondaryBannersBean bean = datas.get(p);
+                onRvItemClick.onRvItemClickListener(p,bean);
+            }
+        });
     }
 
     @Override

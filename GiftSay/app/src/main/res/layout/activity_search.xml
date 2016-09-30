@@ -32,7 +32,7 @@
                 android:layout_gravity="center"
                 android:padding="6dp"
                 android:layout_margin="6dp"
-                android:hint=" 中秋送你大爷好礼"
+                android:hint=" 选份走心好礼送给Ta"
                 android:background="@drawable/home_title_shape"
                 android:textSize="14sp"/>
         </LinearLayout>

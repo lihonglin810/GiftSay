@@ -157,6 +157,7 @@ public class HomeFragment extends AbsBaseFragment{
             }
         });
         pw.setContentView(view);
+        pw.setBackgroundDrawable(null);
         pw.setFocusable(true);
         pw.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override

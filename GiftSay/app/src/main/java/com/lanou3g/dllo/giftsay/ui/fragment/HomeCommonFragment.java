@@ -62,9 +62,10 @@ public class HomeCommonFragment extends AbsBaseFragment implements VolleyResult 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(context, WebActivity.class);
-                String ida = datas.get(position).getId() + "";
-                String url = ConstantBean.HOME_PINJIE_URL + ida;
+                String idUrl = datas.get(position).getId() + "";
+                String url = ConstantBean.HOME_PINJIE_URL + idUrl;
                 intent.putExtra("weburl", url);
+                intent.putExtra("counturl",ConstantBean.HOME_COUNT_PINJIE_URL + idUrl);
                 startActivity(intent);
             }
         });

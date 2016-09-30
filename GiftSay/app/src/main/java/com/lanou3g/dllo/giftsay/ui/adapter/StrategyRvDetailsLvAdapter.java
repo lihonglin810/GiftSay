@@ -1,7 +1,6 @@
 package com.lanou3g.dllo.giftsay.ui.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +12,6 @@ import com.lanou3g.dllo.giftsay.R;
 import com.lanou3g.dllo.giftsay.model.bean.StrategyRvDetailsBean;
 import com.squareup.picasso.Picasso;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**

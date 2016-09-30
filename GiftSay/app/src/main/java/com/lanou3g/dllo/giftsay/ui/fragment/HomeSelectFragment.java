@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.lanou3g.dllo.giftsay.R;
@@ -19,8 +20,10 @@ import com.lanou3g.dllo.giftsay.model.bean.ConstantBean;
 import com.lanou3g.dllo.giftsay.model.bean.HomeCommonBean;
 import com.lanou3g.dllo.giftsay.model.bean.HomeSelectRvBean;
 import com.lanou3g.dllo.giftsay.model.bean.RotateBean;
+import com.lanou3g.dllo.giftsay.model.interfaces.OnRvItemClick;
 import com.lanou3g.dllo.giftsay.model.net.VolleyInstance;
 import com.lanou3g.dllo.giftsay.model.net.VolleyResult;
+import com.lanou3g.dllo.giftsay.ui.activity.FillImageActivity;
 import com.lanou3g.dllo.giftsay.ui.activity.WebActivity;
 import com.lanou3g.dllo.giftsay.ui.adapter.HomeCommonAdapter;
 import com.lanou3g.dllo.giftsay.ui.adapter.HomeSelectRvAdapter;
@@ -104,9 +107,10 @@ public class HomeSelectFragment extends AbsBaseFragment{
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent intent = new Intent(context, WebActivity.class);
-                        String ida = datas.get(position).getId() + "";
-                        String url = "http://hawaii.liwushuo.com/posts/" + ida;
+                        String idUrl = datas.get(position).getId() + "";
+                        String url = ConstantBean.HOME_PINJIE_URL + idUrl;
                         intent.putExtra("weburl", url);
+                        intent.putExtra("counturl",ConstantBean.HOME_COUNT_PINJIE_URL + idUrl);
                         startActivity(intent);
                     }
                 });
@@ -128,8 +132,15 @@ public class HomeSelectFragment extends AbsBaseFragment{
             public void success(String resultStr) {
                 Gson gson = new Gson();
                 HomeSelectRvBean homeSelectRvBean = gson.fromJson(resultStr,HomeSelectRvBean.class);
-                List<HomeSelectRvBean.DataBean.SecondaryBannersBean> datas = homeSelectRvBean.getData().getSecondary_banners();
+                final List<HomeSelectRvBean.DataBean.SecondaryBannersBean> datas = homeSelectRvBean.getData().getSecondary_banners();
                 homeSelectRvAdapter.setDatas(datas);
+                homeSelectRvAdapter.setOnRvItemClick(new OnRvItemClick() {
+                    @Override
+                    public void onRvItemClickListener(int position, Object o) {
+                        String imgUrl = datas.get(position).getImage_url();
+                        goTo(FillImageActivity.class,imgUrl);
+                    }
+                });
             }
 
             @Override

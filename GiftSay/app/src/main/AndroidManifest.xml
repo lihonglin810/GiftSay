@@ -25,7 +25,10 @@
         <activity android:name=".ui.activity.WebActivity" />
         <activity android:name=".ui.activity.ColumnActivity" />
         <activity android:name=".ui.activity.StrategyRvDetailsActivity" />
-        <activity android:name=".ui.activity.SingleDetailsActivity"></activity>
+        <activity android:name=".ui.activity.SingleDetailsActivity" />
+        <activity android:name=".ui.activity.FillImageActivity" />
+        <activity android:name=".ui.activity.StrategyLvDetailsActivity" />
+        <activity android:name=".ui.activity.StrategyLvLookAllActivity"></activity>
     </application>
 
 </manifest>

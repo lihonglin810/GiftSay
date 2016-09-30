@@ -21,6 +21,10 @@ public final class ConstantBean {
      */
     public static final String RECOMMEND_URL = "http://api.liwushuo.com/v2/channels/100/items_v2?ad=2&gender=1&generation=1&limit=10&offset=0";
     /**
+     * 首页精选ListView的点击跳转URL详情拼接
+     */
+    public static final String HOME_COUNT_PINJIE_URL = "http://api.liwushuo.com/v2/posts_v2/";
+    /**
      * 首页跳转详情拼接网址
      */
     public static final String HOME_PINJIE_URL = "http://hawaii.liwushuo.com/posts/";
@@ -116,6 +120,14 @@ public final class ConstantBean {
      * 分类页攻略ListView
      */
     public static final String CATEGORY_LV_URL = "http://api.liwushuo.com/v2/channel_groups/all";
+    /**
+     * 分类页攻略ListView详情网址
+     */
+    public static final String STRATEGY_LV_DETAILS_URL = "http://api.liwushuo.com/v2/channels/";
+    /**
+     * 分类页攻略LV点击详情后面的拼接网址
+     */
+    public static final String STRATEGY_LV_DETAILS_PINJIE_URL ="/items_v2?order_by=now&limit=20&offset=0";
     /**
      * 分类页单品URL
      */

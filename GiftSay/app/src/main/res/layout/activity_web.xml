@@ -6,5 +6,36 @@
         android:id="@+id/aty_web"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#fff"
+        android:layout_alignParentBottom="true">
+        <TextView
+            android:id="@+id/aty_web_like_count_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="13dp"
+            android:drawableLeft="@mipmap/ic_action_compact_favourite_normal"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/aty_web_share_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="13dp"
+            android:drawableLeft="@mipmap/ic_action_compact_share"/>
+        <TextView
+            android:id="@+id/aty_web_comment_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="13dp"
+            android:drawableLeft="@mipmap/ic_action_compact_comment"
+            android:layout_weight="1"/>
+    </LinearLayout>
 
 </RelativeLayout>
