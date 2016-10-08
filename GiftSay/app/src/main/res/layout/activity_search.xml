@@ -8,6 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#e7e7e7"
         android:padding="5dp"
         >
         <LinearLayout
@@ -73,7 +74,7 @@
         android:layout_height="10dp"
         android:background="#dfdfdf"/>
     <RelativeLayout
-
+        android:id="@+id/search_db_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp">

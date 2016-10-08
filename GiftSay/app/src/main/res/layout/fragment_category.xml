@@ -23,7 +23,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/category_title_tv"
+        android:id="@+id/category_title_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="6dp"

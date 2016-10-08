@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/30.
+ * 攻略ListView的GridView适配器
  */
 public class StrategyLvGvAdapter extends BaseAdapter{
     private List<CategoryLvBean.DataBean.ChannelGroupsBean.ChannelsBean> datas;

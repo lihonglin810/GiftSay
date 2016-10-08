@@ -4,9 +4,12 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.lanou3g.dllo.giftsay.R;
 import com.lanou3g.dllo.giftsay.model.bean.ConstantBean;
+import com.lanou3g.dllo.giftsay.ui.activity.SearchActivity;
 import com.lanou3g.dllo.giftsay.ui.adapter.CategoryAdapter;
 
 import java.util.ArrayList;
@@ -19,6 +22,7 @@ import java.util.List;
 public class CategoryFragment extends AbsBaseFragment{
     private ViewPager mCategoryVp;
     private TabLayout mCategoryTb;
+    private RelativeLayout relativeLayout;
 
     public static CategoryFragment newInstance() {
         Bundle args = new Bundle();
@@ -35,10 +39,17 @@ public class CategoryFragment extends AbsBaseFragment{
     protected void initViews() {
         mCategoryVp = byView(R.id.category_vp);
         mCategoryTb = byView(R.id.category_tb);
+        relativeLayout = byView(R.id.category_title_layout);
     }
 
     @Override
     protected void initDatas() {
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goTo(SearchActivity.class);
+            }
+        });
         CategoryPageTab();
     }
 

@@ -18,6 +18,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by dllo on 16/9/30.
+ * 攻略ListView详情的ListView适配器
  */
 public class StrategyLvDetailsLvAdapter extends BaseAdapter{
 

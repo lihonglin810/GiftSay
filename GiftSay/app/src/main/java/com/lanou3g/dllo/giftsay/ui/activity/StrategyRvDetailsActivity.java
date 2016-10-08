@@ -1,10 +1,6 @@
 package com.lanou3g.dllo.giftsay.ui.activity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -21,6 +17,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+/**
+ * 攻略RecyclerView详情activity
+ */
 public class StrategyRvDetailsActivity extends AbsBaseActivity {
     private ListView detailsListView;
     private StrategyRvDetailsLvAdapter strategyRvDetailsLvAdapter;

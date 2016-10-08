@@ -1,7 +1,6 @@
 package com.lanou3g.dllo.giftsay.ui.activity;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -15,6 +14,9 @@ import com.lanou3g.dllo.giftsay.ui.adapter.ColumnListAdapter;
 
 import java.util.List;
 
+/**
+ * 栏目activity
+ */
 public class ColumnActivity extends AbsBaseActivity {
     private ImageView backImg;
     private ListView columnLv;

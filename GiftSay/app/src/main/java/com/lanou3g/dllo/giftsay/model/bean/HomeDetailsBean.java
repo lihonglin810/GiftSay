@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/30.
+ * 首页详情实体类
  */
 public class HomeDetailsBean {
 

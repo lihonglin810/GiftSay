@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/28.
+ * 栏目activityListView适配器
  */
 public class ColumnListAdapter extends BaseAdapter{
     private Context context;

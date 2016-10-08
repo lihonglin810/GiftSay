@@ -7,6 +7,10 @@ import android.widget.ImageView;
 import com.lanou3g.dllo.giftsay.R;
 import com.squareup.picasso.Picasso;
 
+/**
+ * 充满屏幕图片的activity
+ */
+
 public class FillImageActivity extends AbsBaseActivity {
     private ImageView imageView;
     @Override

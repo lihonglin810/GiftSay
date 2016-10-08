@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/30.
+ * 攻略的ListView查看全部适配器
  */
 public class StrategyLvLookAllAdapter extends BaseAdapter{
     private List<CategoryLvBean.DataBean.ChannelGroupsBean.ChannelsBean> datas;

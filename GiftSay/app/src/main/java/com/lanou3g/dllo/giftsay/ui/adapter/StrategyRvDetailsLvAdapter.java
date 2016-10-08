@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/29.
+ * 攻略的RecyclerView详情的ListView适配器
  */
 public class StrategyRvDetailsLvAdapter extends BaseAdapter{
     private Context context;

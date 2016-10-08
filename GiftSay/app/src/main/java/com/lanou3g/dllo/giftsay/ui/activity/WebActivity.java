@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.lanou3g.dllo.giftsay.R;
@@ -13,6 +12,9 @@ import com.lanou3g.dllo.giftsay.model.bean.HomeDetailsBean;
 import com.lanou3g.dllo.giftsay.model.net.VolleyInstance;
 import com.lanou3g.dllo.giftsay.model.net.VolleyResult;
 
+/**
+ * 网页activity
+ */
 public class WebActivity extends AbsBaseActivity {
     private WebView webView;
     private TextView likeTv,shareTv,commentTv;

@@ -1,11 +1,9 @@
 package com.lanou3g.dllo.giftsay.ui.activity;
 
-
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -27,6 +25,7 @@ public class SearchActivity extends AbsBaseActivity implements VolleyResult {
     private RecyclerView searchRecyclerView;
     private SearchRvAdapter searchRvAdapter;
     private TextView cancelTv;
+    private RelativeLayout relativeLayout;
     @Override
     protected int setLayout() {
         return R.layout.activity_search;
@@ -37,6 +36,7 @@ public class SearchActivity extends AbsBaseActivity implements VolleyResult {
         searchRecyclerView = byView(R.id.aty_search_rv);
         searchRvAdapter = new SearchRvAdapter(this);
         cancelTv = byView(R.id.search_cancel_tv);
+        relativeLayout = byView(R.id.search_db_layout);
     }
     @Override
     protected void initDatas() {

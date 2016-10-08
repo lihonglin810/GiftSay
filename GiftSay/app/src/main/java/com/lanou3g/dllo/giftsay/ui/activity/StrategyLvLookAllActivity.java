@@ -1,7 +1,6 @@
 package com.lanou3g.dllo.giftsay.ui.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -15,6 +14,9 @@ import com.lanou3g.dllo.giftsay.ui.adapter.StrategyLvLookAllAdapter;
 
 import java.util.List;
 
+/**
+ * 攻略ListView查看全部activity
+ */
 public class StrategyLvLookAllActivity extends AbsBaseActivity {
     private ImageView backImg;
     private TextView titleTv;

@@ -2,6 +2,7 @@ package com.lanou3g.dllo.giftsay.ui.activity;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,6 +16,9 @@ import com.lanou3g.dllo.giftsay.ui.adapter.SingleDetailsAdapter;
 
 import java.util.List;
 
+/**
+ * 单品详情activity
+ */
 public class SingleDetailsActivity extends AbsBaseActivity {
 
     private ImageView backImg;
@@ -45,9 +49,17 @@ public class SingleDetailsActivity extends AbsBaseActivity {
             public void success(String resultStr) {
                 Gson gson = new Gson();
                 SingleDetailsBean singleDetailsBean = gson.fromJson(resultStr,SingleDetailsBean.class);
-                List<SingleDetailsBean.DataBean.ItemsBean> datas = singleDetailsBean.getData().getItems();
+                final List<SingleDetailsBean.DataBean.ItemsBean> datas = singleDetailsBean.getData().getItems();
                 singleDetailsAdapter.setDatas(datas);
                 gridView.setAdapter(singleDetailsAdapter);
+                gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent1 = new Intent(SingleDetailsActivity.this,WebActivity.class);
+                        intent1.putExtra("weburl",datas.get(position).getUrl());
+                        startActivity(intent1);
+                    }
+                });
             }
 
             @Override
@@ -55,6 +67,7 @@ public class SingleDetailsActivity extends AbsBaseActivity {
 
             }
         });
+
         backImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

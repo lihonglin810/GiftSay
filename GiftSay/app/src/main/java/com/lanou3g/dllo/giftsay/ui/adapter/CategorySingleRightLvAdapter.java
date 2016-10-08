@@ -71,7 +71,7 @@ public class CategorySingleRightLvAdapter extends BaseAdapter{
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent intent = new Intent(context, SingleDetailsActivity.class);
                     String partUrl = bean.getSubcategories().get(position).getId()+"";
-                    String url = ConstantBean.SINGLE_DETIALS_BEFORE_URL + partUrl + ConstantBean.SINGLE_DETIALS_AFTER_URL;
+                    String url = ConstantBean.SINGLE_DETAILS_BEFORE_URL + partUrl + ConstantBean.SINGLE_DETAILS_AFTER_URL;
                     intent.putExtra("url",url);
                     intent.putExtra("name",bean.getSubcategories().get(position).getName());
                     context.startActivity(intent);

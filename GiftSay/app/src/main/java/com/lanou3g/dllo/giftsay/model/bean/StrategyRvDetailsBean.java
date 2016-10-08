@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/29.
+ * 攻略RecyclerView详情实体类
  */
 public class StrategyRvDetailsBean {
 

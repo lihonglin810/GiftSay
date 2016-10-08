@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/30.
+ * 攻略ListView详情实体类
  */
 public class StrategyLvDetailsBean {
     /**

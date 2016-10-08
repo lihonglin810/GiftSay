@@ -135,11 +135,11 @@ public final class ConstantBean {
     /**
      * 分类单品点击详情前半部分网址
      */
-    public static final String SINGLE_DETIALS_BEFORE_URL = "http://api.liwushuo.com/v2/item_subcategories/";
+    public static final String SINGLE_DETAILS_BEFORE_URL = "http://api.liwushuo.com/v2/item_subcategories/";
     /**
      * 分类单品点击详情后半部分网址
      */
-    public static final String SINGLE_DETIALS_AFTER_URL = "/items?limit=50&offset=0";
+    public static final String SINGLE_DETAILS_AFTER_URL = "/items?limit=50&offset=0";
 
     public static final String[] WEEK = {"星期天","星期一","星期二","星期三","星期四","星期五","星期六"};
 

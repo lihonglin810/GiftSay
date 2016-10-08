@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/27.
+ * 搜索activityRecyclerView适配器
  */
 public class SearchRvAdapter extends RecyclerView.Adapter<SearchRvAdapter.SearchRvViewHolder>{
     private List<String> datas;

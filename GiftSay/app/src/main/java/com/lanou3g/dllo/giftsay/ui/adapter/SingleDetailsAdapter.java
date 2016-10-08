@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/29.
+ * 单品详情适配器
  */
 public class SingleDetailsAdapter extends BaseAdapter{
     private List<SingleDetailsBean.DataBean.ItemsBean> datas;
