@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="#ff1466">
+        android:background="#F91936">
 
         <android.support.design.widget.TabLayout
             android:id="@+id/category_tb"

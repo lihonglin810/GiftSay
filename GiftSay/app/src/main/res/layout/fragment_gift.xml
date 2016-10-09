@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="#ff1466">
+        android:background="#F91936">
 
         <TextView
             android:layout_width="wrap_content"
@@ -24,7 +24,7 @@
             android:layout_alignParentRight="true"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:background="#ff1466"
+            android:background="#F91936"
             android:src="@mipmap/icon_white_share" />
     </RelativeLayout>
 

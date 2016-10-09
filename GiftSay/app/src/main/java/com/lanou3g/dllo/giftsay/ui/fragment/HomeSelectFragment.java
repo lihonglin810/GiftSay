@@ -3,6 +3,8 @@ package com.lanou3g.dllo.giftsay.ui.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+import android.os.Handler.Callback;
 
 import com.google.gson.Gson;
 import com.lanou3g.dllo.giftsay.R;
@@ -29,6 +31,7 @@ import com.lanou3g.dllo.giftsay.ui.adapter.HomeCommonAdapter;
 import com.lanou3g.dllo.giftsay.ui.adapter.HomeSelectRvAdapter;
 import com.lanou3g.dllo.giftsay.ui.adapter.RotateVpAdapter;
 import com.lanou3g.dllo.giftsay.view.MyListView;
+import com.lanou3g.dllo.giftsay.view.PullScrollView;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -38,13 +41,13 @@ import java.util.List;
  * Created by dllo on 16/9/10.
  * 主页第一页推荐页Fragment
  */
-public class HomeSelectFragment extends AbsBaseFragment{
+public class HomeSelectFragment extends AbsBaseFragment implements Callback{
 
     private MyListView homeSelectLv;
     private RecyclerView homeSelectRv;
     private HomeCommonAdapter homeCommonAdapter;
     private HomeSelectRvAdapter homeSelectRvAdapter;
-
+    
     private static final int TIME = 3000;
 
     private ViewPager viewPager;
@@ -52,6 +55,9 @@ public class HomeSelectFragment extends AbsBaseFragment{
     private List<RotateBean.DataBean.BannersBean> datas;
     private RotateVpAdapter vpAdapter;
     private TextView dateTv;
+
+    private Handler handler1 ;
+    private PullScrollView test;
 
     public static HomeSelectFragment newInstance(String url,String sUrl,String lunboUrl) {
         Bundle args = new Bundle();
@@ -74,10 +80,24 @@ public class HomeSelectFragment extends AbsBaseFragment{
         viewPager = byView(R.id.rotate_vp);
         pointLl = byView(R.id.rotate_point_container);
         dateTv = byView(R.id.jingxuan_date);
+        test = byView(R.id.test);
     }
 
     @Override
     protected void initDatas() {
+        //下拉刷新
+        handler1 = new Handler(Looper.getMainLooper(), this);
+        test.setOnRefreshListener(new PullScrollView.onRefreshListener() {
+            @Override
+            public void refresh() {
+                handler1.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        test.stopRefresh();
+                    }
+                },2000);
+            }
+        });
         //时间获取当前时间
         String date1 = null;
         Calendar calendar = Calendar.getInstance();
@@ -150,6 +170,7 @@ public class HomeSelectFragment extends AbsBaseFragment{
         });
         // 轮播图
         StartCarousel();
+
     }
 
     private void StartCarousel() {
@@ -271,5 +292,10 @@ public class HomeSelectFragment extends AbsBaseFragment{
 
             }
         });
+    }
+
+    @Override
+    public boolean handleMessage(Message msg) {
+        return false;
     }
 }

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:weightSum="5"
-        android:background="#ff1466"
+        android:background="#F91936"
         android:orientation="horizontal">
 
         <TextView
@@ -55,7 +55,7 @@
             android:layout_weight="0.5"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:background="#ff1466"
+            android:background="#F91936"
             android:src="@mipmap/btn_signin"/>
     </LinearLayout>
 

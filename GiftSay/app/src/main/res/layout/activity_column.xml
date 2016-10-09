@@ -6,7 +6,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#f03">
+        android:background="#F91936">
         <ImageView
             android:id="@+id/aty_column_back_img"
             android:layout_width="wrap_content"
