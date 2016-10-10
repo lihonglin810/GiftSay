@@ -1,37 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#F91936">
-        <ImageView
-            android:id="@+id/single_details_back_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/menu_action_back"
-            android:layout_centerVertical="true"
-            android:layout_margin="10dp"/>
-        <TextView
-            android:id="@+id/single_details_title_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="栏目"
-            android:textSize="18sp"
-            android:layout_centerInParent="true"
-            android:textColor="#fff"/>
-        <ImageView
-            android:id="@+id/single_details_updown_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/icon_white_share"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_margin="10dp"
-            />
-    </RelativeLayout>
     <ListView
         android:id="@+id/strategy_rv_details_lv"
         android:layout_width="match_parent"

@@ -55,7 +55,7 @@ public class SingleDetailsActivity extends AbsBaseActivity {
                 gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent intent1 = new Intent(SingleDetailsActivity.this,WebActivity.class);
+                        Intent intent1 = new Intent(SingleDetailsActivity.this,SingleWebActivity.class);
                         intent1.putExtra("weburl",datas.get(position).getUrl());
                         startActivity(intent1);
                     }

@@ -1,5 +1,6 @@
 package com.lanou3g.dllo.giftsay.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,7 @@ import com.lanou3g.dllo.giftsay.model.interfaces.OnRvItemClick;
 import com.lanou3g.dllo.giftsay.model.net.VolleyInstance;
 import com.lanou3g.dllo.giftsay.model.net.VolleyResult;
 import com.lanou3g.dllo.giftsay.ui.activity.LoginActivity;
+import com.lanou3g.dllo.giftsay.ui.activity.SingleWebActivity;
 import com.lanou3g.dllo.giftsay.ui.activity.WebActivity;
 import com.lanou3g.dllo.giftsay.ui.adapter.GiftNewCommonAdapter;
 
@@ -66,10 +68,10 @@ public class GiftCommonFragment extends AbsBaseFragment implements VolleyResult 
         giftNewCommonAdapter.setOnRvItemClick(new OnRvItemClick() {
             @Override
             public void onRvItemClickListener(int position, Object o) {
-                Bundle bundle = new Bundle();
                 String webUrl = datas.get(position - 1).getUrl();
-                bundle.putString("weburl",webUrl);
-                goTo(WebActivity.class,bundle);
+                Intent intent = new Intent(context, SingleWebActivity.class);
+                intent.putExtra("weburl",webUrl);
+                startActivity(intent);
             }
         });
     }

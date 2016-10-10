@@ -41,8 +41,7 @@ public class WebActivity extends AbsBaseActivity {
         });
 
         Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        String url = bundle.getString("weburl");
+        String url = intent.getStringExtra("weburl");
         webView.loadUrl(url);
         String countUrl = intent.getStringExtra("counturl");
         VolleyInstance.getInstance().startRequest(countUrl, new VolleyResult() {

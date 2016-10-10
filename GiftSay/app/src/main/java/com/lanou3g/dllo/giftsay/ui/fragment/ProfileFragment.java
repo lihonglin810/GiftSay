@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 
 import com.lanou3g.dllo.giftsay.R;
+import com.lanou3g.dllo.giftsay.ui.activity.CollectionActivity;
 import com.lanou3g.dllo.giftsay.ui.activity.LoginActivity;
 
 
@@ -17,6 +19,7 @@ public class ProfileFragment extends AbsBaseFragment implements View.OnClickList
 
     private RadioGroup radioGroup;
     private ImageView loginAvatarImg;
+    private RelativeLayout relativeLayout;
 
     public static ProfileFragment newInstance() {
         
@@ -35,12 +38,19 @@ public class ProfileFragment extends AbsBaseFragment implements View.OnClickList
     protected void initViews() {
         radioGroup = byView(R.id.profile_radiogroup);
         loginAvatarImg = byView(R.id.profile_avatar);
+        relativeLayout = byView(R.id.profile_db_layout);
     }
 
     @Override
     protected void initDatas() {
         radioButtonClick();
         loginAvatarImg.setOnClickListener(this);
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goTo(CollectionActivity.class);
+            }
+        });
     }
 
     private void radioButtonClick() {

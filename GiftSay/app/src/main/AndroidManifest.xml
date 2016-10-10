@@ -28,7 +28,9 @@
         <activity android:name=".ui.activity.SingleDetailsActivity" />
         <activity android:name=".ui.activity.FillImageActivity" />
         <activity android:name=".ui.activity.StrategyLvDetailsActivity" />
-        <activity android:name=".ui.activity.StrategyLvLookAllActivity"></activity>
+        <activity android:name=".ui.activity.StrategyLvLookAllActivity" />
+        <activity android:name=".ui.activity.CollectionActivity" />
+        <activity android:name=".ui.activity.SingleWebActivity"></activity>
     </application>
 
 </manifest>
