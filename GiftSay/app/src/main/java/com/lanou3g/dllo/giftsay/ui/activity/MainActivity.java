@@ -2,13 +2,19 @@ package com.lanou3g.dllo.giftsay.ui.activity;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.widget.RadioGroup;
 
 import com.lanou3g.dllo.giftsay.R;
+import com.lanou3g.dllo.giftsay.model.bean.UserInfoBean;
 import com.lanou3g.dllo.giftsay.ui.fragment.CategoryFragment;
 import com.lanou3g.dllo.giftsay.ui.fragment.GiftFragment;
 import com.lanou3g.dllo.giftsay.ui.fragment.HomeFragment;
 import com.lanou3g.dllo.giftsay.ui.fragment.ProfileFragment;
+import com.squareup.picasso.Picasso;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * 主页面
@@ -34,7 +40,6 @@ public class MainActivity extends AbsBaseActivity {
         mCategoryFragment = CategoryFragment.newInstance();
         mProfileFragment = ProfileFragment.newInstance();
     }
-
     @Override
     protected void initDatas() {
         mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

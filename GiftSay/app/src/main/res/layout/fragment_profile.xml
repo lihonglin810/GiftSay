@@ -33,13 +33,14 @@
                 android:src="@mipmap/icon_scan"/>
         </RelativeLayout>
 
-        <ImageView
-            android:id="@+id/profile_avatar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_avatar_img"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:layout_centerInParent="true"
             android:src="@mipmap/me_avatar_boy"/>
         <TextView
+            android:id="@+id/profile_avatar_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -47,7 +48,7 @@
             android:textColor="#ffffff"
             android:textSize="15sp"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/profile_avatar"/>
+            android:layout_below="@id/profile_avatar_img"/>
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
