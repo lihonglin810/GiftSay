@@ -57,6 +57,10 @@ public class SingleDetailsActivity extends AbsBaseActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent intent1 = new Intent(SingleDetailsActivity.this,SingleWebActivity.class);
                         intent1.putExtra("weburl",datas.get(position).getUrl());
+                        intent1.putExtra("name",datas.get(position).getName());
+                        intent1.putExtra("price",datas.get(position).getPrice());
+                        intent1.putExtra("description",datas.get(position).getShort_description());
+                        intent1.putExtra("imgUrl",datas.get(position).getCover_image_url());
                         startActivity(intent1);
                     }
                 });

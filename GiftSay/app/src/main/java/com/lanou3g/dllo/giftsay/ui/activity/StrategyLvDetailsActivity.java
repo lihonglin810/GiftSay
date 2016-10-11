@@ -15,6 +15,9 @@ import com.lanou3g.dllo.giftsay.ui.adapter.StrategyLvDetailsLvAdapter;
 
 import java.util.List;
 
+/**
+ * 分类攻略ListView详情activity
+ */
 public class StrategyLvDetailsActivity extends AbsBaseActivity {
     private ImageView backImg,updownImg;
     private TextView titleTv;

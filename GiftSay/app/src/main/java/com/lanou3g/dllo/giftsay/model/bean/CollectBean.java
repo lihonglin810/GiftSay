@@ -16,23 +16,26 @@ public class CollectBean {
     private String description;
     private String price;
     private String imgUrl;
+    private String webUrl;
 
     public CollectBean() {
     }
 
-    public CollectBean(int id, String name, String description, String price, String imgUrl) {
+    public CollectBean(int id, String name, String description, String price, String imgUrl, String webUrl) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.imgUrl = imgUrl;
+        this.webUrl = webUrl;
     }
 
-    public CollectBean(String imgUrl, String price, String description, String name) {
-        this.imgUrl = imgUrl;
-        this.price = price;
-        this.description = description;
+    public CollectBean(String name, String description, String price, String imgUrl, String webUrl) {
         this.name = name;
+        this.description = description;
+        this.price = price;
+        this.imgUrl = imgUrl;
+        this.webUrl = webUrl;
     }
 
     public int getId() {
@@ -73,5 +76,13 @@ public class CollectBean {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public String getWebUrl() {
+        return webUrl;
+    }
+
+    public void setWebUrl(String webUrl) {
+        this.webUrl = webUrl;
     }
 }

@@ -69,8 +69,16 @@ public class GiftCommonFragment extends AbsBaseFragment implements VolleyResult 
             @Override
             public void onRvItemClickListener(int position, Object o) {
                 String webUrl = datas.get(position - 1).getUrl();
+                String imgUrl = datas.get(position - 1).getCover_image_url();
+                String name = datas.get(position - 1).getName();
+                String description = datas.get(position - 1).getShort_description();
+                String price = datas.get(position - 1).getPrice();
                 Intent intent = new Intent(context, SingleWebActivity.class);
                 intent.putExtra("weburl",webUrl);
+                intent.putExtra("imgUrl",imgUrl);
+                intent.putExtra("name",name);
+                intent.putExtra("description",description);
+                intent.putExtra("price",price);
                 startActivity(intent);
             }
         });

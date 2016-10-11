@@ -49,21 +49,14 @@ public class LiteOrmInstance {
         return liteOrm.query(CollectBean.class);
     }
     // 根据条件查询
-    public List<CollectBean> queryByTitle(String name){
+    public List<CollectBean> queryByName(String name){
         QueryBuilder<CollectBean> qb = new QueryBuilder<>(CollectBean.class);
         qb.where("name = ?",new String []{name});
-        return liteOrm.query(qb);
-    }
-    public List<CollectBean> queryByTitle(String name, int start, int end){
-        QueryBuilder<CollectBean> qb = new QueryBuilder<>(CollectBean.class);
-        qb.where("name = ?",new String []{name});
-        // 但是:end需要判断,不要超出数据库数据的个数的限制
-        qb.limit(start,end);
         return liteOrm.query(qb);
     }
     // 按条件删除
-    public void deleteByTitle(String title){
-        WhereBuilder wb = new WhereBuilder(CollectBean.class,"title = ?",new String []{title});
+    public void deleteByName(String name){
+        WhereBuilder wb = new WhereBuilder(CollectBean.class,"name = ?",new String []{name});
         liteOrm.delete(wb);
     }
 }
