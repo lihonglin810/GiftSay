@@ -30,7 +30,6 @@ public class LoginActivity extends AbsBaseActivity{
     private ImageView closeImg;
     private ImageView qqImg;
     private EventBus eventBus;
-    private Button btn;
     @Override
     protected int setLayout() {
         return R.layout.activity_profile_login;
@@ -41,17 +40,10 @@ public class LoginActivity extends AbsBaseActivity{
         closeImg = byView(R.id.login_close_img);
         qqImg = byView(R.id.login_qq);
         eventBus = EventBus.getDefault();
-        btn = byView(R.id.login_btn);
     }
 
     @Override
     protected void initDatas() {
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goTo(LoginActivity.this,WelcomeActivity.class);
-            }
-        });
         closeImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
