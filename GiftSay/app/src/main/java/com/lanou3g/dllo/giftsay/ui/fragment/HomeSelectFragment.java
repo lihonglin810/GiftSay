@@ -1,6 +1,7 @@
 package com.lanou3g.dllo.giftsay.ui.fragment;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -55,6 +56,7 @@ public class HomeSelectFragment extends AbsBaseFragment implements Callback{
     private List<RotateBean.DataBean.BannersBean> datas;
     private RotateVpAdapter vpAdapter;
     private TextView dateTv;
+    private ImageView animImg;
 
     private Handler handler1 ;
     private PullScrollView test;
@@ -81,6 +83,7 @@ public class HomeSelectFragment extends AbsBaseFragment implements Callback{
         pointLl = byView(R.id.rotate_point_container);
         dateTv = byView(R.id.jingxuan_date);
         test = byView(R.id.test);
+        animImg = byView(R.id.anim);
     }
 
     @Override
@@ -90,6 +93,8 @@ public class HomeSelectFragment extends AbsBaseFragment implements Callback{
         test.setOnRefreshListener(new PullScrollView.onRefreshListener() {
             @Override
             public void refresh() {
+                AnimationDrawable drawable = (AnimationDrawable) animImg.getBackground();
+                drawable.start();
                 handler1.postDelayed(new Runnable() {
                     @Override
                     public void run() {

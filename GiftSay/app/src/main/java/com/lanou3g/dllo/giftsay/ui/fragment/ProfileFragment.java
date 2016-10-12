@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ import com.lanou3g.dllo.giftsay.R;
 import com.lanou3g.dllo.giftsay.model.bean.UserInfoBean;
 import com.lanou3g.dllo.giftsay.ui.activity.CollectionActivity;
 import com.lanou3g.dllo.giftsay.ui.activity.LoginActivity;
+import com.lanou3g.dllo.giftsay.ui.activity.SetActivity;
 import com.squareup.picasso.Picasso;
 
 import org.greenrobot.eventbus.EventBus;
@@ -35,6 +37,7 @@ public class ProfileFragment extends AbsBaseFragment implements View.OnClickList
     private TextView loginAvatarNameTv;
     private RelativeLayout relativeLayout;
     private AlertDialog alertDialog;
+    private ImageView setImg;
 
     public static ProfileFragment newInstance() {
         Bundle args = new Bundle();
@@ -53,10 +56,12 @@ public class ProfileFragment extends AbsBaseFragment implements View.OnClickList
         loginAvatarImg = byView(R.id.profile_avatar_img);
         loginAvatarNameTv = byView(R.id.profile_avatar_name);
         relativeLayout = byView(R.id.profile_db_layout);
+        setImg = byView(R.id.profile_settings);
     }
 
     @Override
     protected void initDatas() {
+        // 将获取到的用户信息存到sp中
         SharedPreferences sp = context.getSharedPreferences("user", Context.MODE_PRIVATE);
         String name = sp.getString("name","请登录");
         String icon = sp.getString("icon","123");
@@ -68,8 +73,16 @@ public class ProfileFragment extends AbsBaseFragment implements View.OnClickList
             Picasso.with(context).load(icon).into(loginAvatarImg);
         }
         EventBus.getDefault().register(this);
-        radioButtonClick();
-        loginAvatarImg.setOnClickListener(this);
+        // 设置
+        setImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goTo(SetActivity.class);
+            }
+        });
+        radioButtonClick();// 两个radioButton的切换
+        loginAvatarImg.setOnClickListener(this);// 登录
+        // 收藏
         relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,8 +160,6 @@ public class ProfileFragment extends AbsBaseFragment implements View.OnClickList
                 Toast.makeText(context, "滚蛋", Toast.LENGTH_SHORT).show();
             }
         });
-
-        // 对话框的显示需要 builder(创建者)生成并显示
         builder.create().show();
     }
 
