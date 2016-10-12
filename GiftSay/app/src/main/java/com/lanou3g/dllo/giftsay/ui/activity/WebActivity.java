@@ -1,6 +1,7 @@
 package com.lanou3g.dllo.giftsay.ui.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;

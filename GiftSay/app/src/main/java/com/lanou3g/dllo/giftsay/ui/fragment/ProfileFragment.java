@@ -1,11 +1,15 @@
 package com.lanou3g.dllo.giftsay.ui.fragment;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lanou3g.dllo.giftsay.R;
 import com.lanou3g.dllo.giftsay.model.bean.UserInfoBean;
@@ -30,6 +34,7 @@ public class ProfileFragment extends AbsBaseFragment implements View.OnClickList
     private CircleImageView loginAvatarImg;
     private TextView loginAvatarNameTv;
     private RelativeLayout relativeLayout;
+    private AlertDialog alertDialog;
 
     public static ProfileFragment newInstance() {
         Bundle args = new Bundle();
@@ -48,17 +53,21 @@ public class ProfileFragment extends AbsBaseFragment implements View.OnClickList
         loginAvatarImg = byView(R.id.profile_avatar_img);
         loginAvatarNameTv = byView(R.id.profile_avatar_name);
         relativeLayout = byView(R.id.profile_db_layout);
-        EventBus.getDefault().register(this);
-    }
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void getData(UserInfoBean bean){
-        loginAvatarNameTv.setText(bean.getName());
-        Log.d("ProfileFragment", bean.getName());
-        Picasso.with(context).load(bean.getIcon()).into(loginAvatarImg);
     }
 
     @Override
     protected void initDatas() {
+        SharedPreferences sp = context.getSharedPreferences("user", Context.MODE_PRIVATE);
+        String name = sp.getString("name","请登录");
+        String icon = sp.getString("icon","123");
+        if (icon == "123") {
+            loginAvatarImg.setImageResource(R.mipmap.me_avatar_boy);
+            loginAvatarNameTv.setText("请登录");
+        }else {
+            loginAvatarNameTv.setText(name);
+            Picasso.with(context).load(icon).into(loginAvatarImg);
+        }
+        EventBus.getDefault().register(this);
         radioButtonClick();
         loginAvatarImg.setOnClickListener(this);
         relativeLayout.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +76,17 @@ public class ProfileFragment extends AbsBaseFragment implements View.OnClickList
                 goTo(CollectionActivity.class);
             }
         });
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void getData(UserInfoBean bean){
+        loginAvatarNameTv.setText(bean.getName());
+        Picasso.with(context).load(bean.getIcon()).into(loginAvatarImg);
+        SharedPreferences sp = context.getSharedPreferences("user", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("name",bean.getName());
+        editor.putString("icon",bean.getIcon());
+        editor.commit();
     }
 
     private void radioButtonClick() {
@@ -87,14 +107,54 @@ public class ProfileFragment extends AbsBaseFragment implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.profile_avatar_img:
-                goTo(LoginActivity.class);
+                SharedPreferences sp = context.getSharedPreferences("user", Context.MODE_PRIVATE);
+                if (sp.getString("name", "123").equals("123")) {
+                    goTo(LoginActivity.class);
+                }else {
+                    showDialog();
+                }
                 break;
         }
+    }
+
+    private void showDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("确认退出吗???");
+        builder.setIcon(R.mipmap.ic_launcher);
+
+        builder.setPositiveButton("是的", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(context, "退出成功", Toast.LENGTH_SHORT).show();
+                SharedPreferences sp = context.getSharedPreferences("user", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.clear();
+                editor.commit();
+                loginAvatarImg.setImageResource(R.mipmap.me_avatar_boy);
+                loginAvatarNameTv.setText("请登录");
+            }
+        });
+        builder.setNegativeButton("不退出", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(context, "不退出", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        builder.setNeutralButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(context, "滚蛋", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // 对话框的显示需要 builder(创建者)生成并显示
+        builder.create().show();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        EventBus.getDefault().unregister(context);
+        EventBus.getDefault().unregister(this);
     }
 }

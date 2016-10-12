@@ -2,12 +2,14 @@ package com.lanou3g.dllo.giftsay.ui.activity;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.lanou3g.dllo.giftsay.R;
+import com.lanou3g.dllo.giftsay.model.bean.ConstantBean;
 import com.lanou3g.dllo.giftsay.model.bean.StrategyLvDetailsBean;
 import com.lanou3g.dllo.giftsay.model.net.VolleyInstance;
 import com.lanou3g.dllo.giftsay.model.net.VolleyResult;
@@ -54,9 +56,20 @@ public class StrategyLvDetailsActivity extends AbsBaseActivity {
             public void success(String resultStr) {
                 Gson gson = new Gson();
                 StrategyLvDetailsBean strategyLvDetailsBean = gson.fromJson(resultStr,StrategyLvDetailsBean.class);
-                List<StrategyLvDetailsBean.DataBean.ItemsBean> datas = strategyLvDetailsBean.getData().getItems();
+                final List<StrategyLvDetailsBean.DataBean.ItemsBean> datas = strategyLvDetailsBean.getData().getItems();
                 strategyLvDetailsLvAdapter.setDatas(datas);
                 listView.setAdapter(strategyLvDetailsLvAdapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(StrategyLvDetailsActivity.this, WebActivity.class);
+                        String idUrl = datas.get(position).getId() + "";
+                        String url = ConstantBean.HOME_PINJIE_URL + idUrl;
+                        intent.putExtra("weburl", url);
+                        intent.putExtra("counturl",ConstantBean.HOME_COUNT_PINJIE_URL + idUrl);
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override
